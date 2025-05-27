@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://e7430yu1ixgq"]
+
+[ext_resource type="Texture2D" uid="uid://bqesj7hu2n574" path="res://Assets/Sprites/6 UI/Sprites/UI_Flat_Bar10a.png" id="1_pfnhm"]
+[ext_resource type="Script" uid="uid://dsedv7l7a58k5" path="res://Scenes/NextStepIcon/NextStepIcon.gd" id="2_roxje"]
+[ext_resource type="Texture2D" uid="uid://j37idae0lag8" path="res://Assets/Sprites/2 Objects/Sieve_Single.png" id="3_f2lg5"]
+
+[node name="NextStepIcon" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pfnhm")
+script = ExtResource("2_roxje")
+
+[node name="IconTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f2lg5")
+expand_mode = 2
+stretch_mode = 3

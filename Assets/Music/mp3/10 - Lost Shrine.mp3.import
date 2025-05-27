@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://delscks7r6ves"
+path="res://.godot/imported/10 - Lost Shrine.mp3-74cb7f720841dd028ca0c269007a1150.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/mp3/10 - Lost Shrine.mp3"
+dest_files=["res://.godot/imported/10 - Lost Shrine.mp3-74cb7f720841dd028ca0c269007a1150.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

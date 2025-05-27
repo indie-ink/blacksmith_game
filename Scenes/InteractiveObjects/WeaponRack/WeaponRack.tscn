@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://uoxapmweoqce"]
+
+[ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_g2egu"]
+[ext_resource type="Texture2D" uid="uid://cwdugkpwb5654" path="res://Assets/Sprites/2 Objects/Rack.png" id="2_eibmt"]
+[ext_resource type="Script" uid="uid://bh4d1bnhixjwd" path="res://Scenes/InteractiveObjects/WeaponRack/WeaponRack.gd" id="2_lu4g5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu4g5"]
+
+[node name="WeaponRack" instance=ExtResource("1_g2egu")]
+script = ExtResource("2_lu4g5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -0.5)
+texture = ExtResource("2_eibmt")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_lu4g5")

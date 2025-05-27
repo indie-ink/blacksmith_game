@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0svjbub8ge2g"]
+
+[ext_resource type="Script" uid="uid://cr0xo4hme1l6m" path="res://Scenes/PickUpItem/PickUpItem.gd" id="1_gtwna"]
+[ext_resource type="Texture2D" uid="uid://6bbxah5xf56a" path="res://Assets/Sprites/4 Icons/Ingot_1.png" id="1_vtuy5"]
+[ext_resource type="AudioStream" uid="uid://c3nq4n6jp8nih" path="res://Assets/SFX/MAGAngl_BUFF-Buff Pickup_HY_PC-002.wav" id="2_gtwna"]
+[ext_resource type="Texture2D" uid="uid://bxttc8xs055h5" path="res://Assets/Sprites/4 Icons/Coin.png" id="3_fsx7u"]
+
+[sub_resource type="Animation" id="Animation_gtwna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vtuy5"]
+resource_name = "pick_up"
+length = 1.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 1.4, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.4, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -9), Vector2(0, -12), Vector2(0, -9), Vector2(0, -8)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.788332,
+"start_offset": 0.0,
+"stream": ExtResource("2_gtwna")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fsx7u"]
+_data = {
+&"RESET": SubResource("Animation_gtwna"),
+&"pick_up": SubResource("Animation_vtuy5")
+}
+
+[node name="PickUpItem" type="Node2D"]
+script = ExtResource("1_gtwna")
+sprite = ExtResource("1_vtuy5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_fsx7u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 13.361
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fsx7u")
+}

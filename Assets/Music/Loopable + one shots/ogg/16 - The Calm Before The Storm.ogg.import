@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://lw1oq61286ew"
+path="res://.godot/imported/16 - The Calm Before The Storm.ogg-28d1783074d875556ce79d3fecc88e26.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Loopable + one shots/ogg/16 - The Calm Before The Storm.ogg"
+dest_files=["res://.godot/imported/16 - The Calm Before The Storm.ogg-28d1783074d875556ce79d3fecc88e26.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpvnwngvnaesi"
+path="res://.godot/imported/05 - Battle 1.mp3-12f558ee105e88b5e49cc7b56d9bb9cd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/mp3/05 - Battle 1.mp3"
+dest_files=["res://.godot/imported/05 - Battle 1.mp3-12f558ee105e88b5e49cc7b56d9bb9cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

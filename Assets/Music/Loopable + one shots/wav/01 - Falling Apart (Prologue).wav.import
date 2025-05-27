@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c3yjrtox2qoe0"
+path="res://.godot/imported/01 - Falling Apart (Prologue).wav-536e3e41df483131c08050ffe9e77ded.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Loopable + one shots/wav/01 - Falling Apart (Prologue).wav"
+dest_files=["res://.godot/imported/01 - Falling Apart (Prologue).wav-536e3e41df483131c08050ffe9e77ded.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d32d31mwwfidm"
+path="res://.godot/imported/DSGNSynth_BUFF-Bird Buff_HY_PC-002.wav-b4ea73a9777ccb7ef0435bd4ab8d4fa2.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/DSGNSynth_BUFF-Bird Buff_HY_PC-002.wav"
+dest_files=["res://.godot/imported/DSGNSynth_BUFF-Bird Buff_HY_PC-002.wav-b4ea73a9777ccb7ef0435bd4ab8d4fa2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

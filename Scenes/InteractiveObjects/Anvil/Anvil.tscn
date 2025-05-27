@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct75fsh8ykn2q"]
+
+[ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_h7ema"]
+[ext_resource type="Script" uid="uid://o8vw5yuadbii" path="res://Scenes/InteractiveObjects/Anvil/Anvil.gd" id="2_3ir3a"]
+[ext_resource type="Texture2D" uid="uid://bju7dgetpcvcl" path="res://Assets/Sprites/2 Objects/Anvil.png" id="2_fps4c"]
+[ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="4_3w70b"]
+[ext_resource type="Texture2D" uid="uid://c3gabev15du63" path="res://Assets/Sprites/4 Icons/Sword_2.png" id="5_gsvfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fps4c"]
+size = Vector2(16, 13)
+
+[node name="Anvil" instance=ExtResource("1_h7ema")]
+script = ExtResource("2_3ir3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fps4c")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_fps4c")
+
+[node name="PickUpItem" parent="." index="2" instance=ExtResource("4_3w70b")]
+position = Vector2(0, -15)
+scale = Vector2(0.6, 0.6)
+sprite = ExtResource("5_gsvfe")

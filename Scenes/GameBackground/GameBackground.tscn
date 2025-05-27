@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3uiix57tfhb5"]
+
+[ext_resource type="Texture2D" uid="uid://bnhwiquebhkas" path="res://Assets/Sprites/5 Environment/BG1.png" id="1_ryw2k"]
+[ext_resource type="Texture2D" uid="uid://cpfyvdvddnqr5" path="res://Assets/Sprites/5 Environment/BG2.png" id="2_8ma3w"]
+[ext_resource type="Texture2D" uid="uid://bpec20uch14mk" path="res://Assets/Sprites/5 Environment/BG3.png" id="3_p8n1y"]
+
+[node name="GameBackground" type="Node2D"]
+
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(238, 132)
+scale = Vector2(1.57671, 1.57671)
+texture = ExtResource("1_ryw2k")
+
+[node name="Bg2" type="Sprite2D" parent="."]
+position = Vector2(237, 162)
+scale = Vector2(1.55618, 1.55618)
+texture = ExtResource("2_8ma3w")
+
+[node name="Bg3" type="Sprite2D" parent="."]
+position = Vector2(243, 219)
+scale = Vector2(1.60386, 1.60386)
+texture = ExtResource("3_p8n1y")

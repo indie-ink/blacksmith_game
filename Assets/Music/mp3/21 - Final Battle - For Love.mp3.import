@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gorv1r3c4qra"
+path="res://.godot/imported/21 - Final Battle - For Love.mp3-9372eca4ecef83e2ffee1e6cad3d6ca9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/mp3/21 - Final Battle - For Love.mp3"
+dest_files=["res://.godot/imported/21 - Final Battle - For Love.mp3-9372eca4ecef83e2ffee1e6cad3d6ca9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

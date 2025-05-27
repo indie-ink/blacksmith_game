@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dofj2j67tv3fi"
+path="res://.godot/imported/07 - Port Town.mp3-0cc5e2196be31c66e336de5c33f374e7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/mp3/07 - Port Town.mp3"
+dest_files=["res://.godot/imported/07 - Port Town.mp3-0cc5e2196be31c66e336de5c33f374e7.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

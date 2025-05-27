@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbhkaakkxqrf0"]
+
+[ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_2yplf"]
+[ext_resource type="Script" uid="uid://dglcw1uudw0bu" path="res://Scenes/InteractiveObjects/Sieve/Sieve.gd" id="2_4kw2c"]
+[ext_resource type="Texture2D" uid="uid://cb1opke03fi3l" path="res://Assets/Sprites/2 Objects/Sieve.png" id="2_75ly0"]
+[ext_resource type="Texture2D" uid="uid://d4but5f6mr6vh" path="res://Assets/Sprites/4 Icons/Ore_1.png" id="4_7jc7u"]
+[ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="6_q4s05"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnje2"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ypxo"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71nye"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agreg"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03dkw"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_300ho"]
+atlas = ExtResource("2_75ly0")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kw2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnje2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ypxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71nye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agreg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03dkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_300ho")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75ly0"]
+size = Vector2(34, 24)
+
+[node name="Sieve" instance=ExtResource("1_2yplf")]
+script = ExtResource("2_4kw2c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_4kw2c")
+autoplay = "default"
+frame = 3
+frame_progress = 0.794239
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, 12)
+shape = SubResource("RectangleShape2D_75ly0")
+
+[node name="PickUpItem" parent="." index="2" instance=ExtResource("6_q4s05")]
+position = Vector2(1, -9)
+scale = Vector2(0.5, 0.5)
+sprite = ExtResource("4_7jc7u")

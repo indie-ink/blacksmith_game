@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0yxn65utvrcw"
+path="res://.godot/imported/11 - The Mighty Kingdom.wav-d449a3c68f7d0390e788c600cc97f64e.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Loopable + one shots/wav/11 - The Mighty Kingdom.wav"
+dest_files=["res://.godot/imported/11 - The Mighty Kingdom.wav-d449a3c68f7d0390e788c600cc97f64e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

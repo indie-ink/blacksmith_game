@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8vhb3mqq5ikv"
+path="res://.godot/imported/12 - Frozen Abyss.mp3-4106509cf4f2f7318fdff36236aae36a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/mp3/12 - Frozen Abyss.mp3"
+dest_files=["res://.godot/imported/12 - Frozen Abyss.mp3-4106509cf4f2f7318fdff36236aae36a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

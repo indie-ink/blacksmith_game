@@ -5,10 +5,19 @@ extends CharacterBody2D
 const GRAVITY := 600
 const RUN_SPEED := 80.0
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var sound: AudioStreamPlayer2D = $Sound
 
 
-func _unhandled_input(event: InputEvent) -> void:	
+var _is_smithing := false
+
+
+func _enter_tree() -> void:
+	SignalHub.anvil_hit.connect(handle_anvil_hit)
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	process_movement_input()
 
 
@@ -22,7 +31,17 @@ func process_movement_input() -> void:
 	velocity.x = RUN_SPEED * Input.get_axis("left", "right")
 	
 	if not is_equal_approx(velocity.x, 0.0):
-		animated_sprite_2d.play("walk")
-		animated_sprite_2d.flip_h = velocity.x < 0
-	else:
-		animated_sprite_2d.play("idle")
+		sprite_2d.flip_h = velocity.x < 0
+
+
+func handle_anvil_hit() -> void:
+	_is_smithing = true
+
+
+func play_anvil_hit_sound() -> void:
+	sound.play()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hammer":
+		_is_smithing = false

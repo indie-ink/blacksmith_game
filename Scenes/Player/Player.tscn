@@ -1,155 +1,191 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdtlv2dt51te8"]
+[gd_scene load_steps=26 format=3 uid="uid://bdtlv2dt51te8"]
 
 [ext_resource type="Script" uid="uid://cyyhbob8lbhic" path="res://Scenes/Player/Player.gd" id="1_ft8w5"]
-[ext_resource type="Texture2D" uid="uid://dtc04k6i7xm1c" path="res://Assets/Sprites/1 Smith/Smith_idle.png" id="1_s0eop"]
-[ext_resource type="Texture2D" uid="uid://dared7ib3xroh" path="res://Assets/Sprites/1 Smith/Smith_hammer.png" id="2_ude3g"]
-[ext_resource type="Texture2D" uid="uid://j4wpv761cb1d" path="res://Assets/Sprites/1 Smith/Smith_walk.png" id="3_h54ih"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5acl"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epg6k"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u84n"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_esmjy"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6tu5v"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_spxdj"]
-atlas = ExtResource("2_ude3g")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft8w5"]
-atlas = ExtResource("1_s0eop")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h54ih"]
-atlas = ExtResource("1_s0eop")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ude3g"]
-atlas = ExtResource("1_s0eop")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmcll"]
-atlas = ExtResource("1_s0eop")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wape"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk5o5"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_825xp"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ji083"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0kmp4"]
-atlas = ExtResource("3_h54ih")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4wape"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i5acl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epg6k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0u84n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_esmjy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6tu5v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spxdj")
-}],
-"loop": true,
-"name": &"hammer",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft8w5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h54ih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ude3g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmcll")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4wape")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t26db")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fk5o5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_825xp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ji083")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0kmp4")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 8.0
-}]
+[ext_resource type="Texture2D" uid="uid://dt4s3aqhqqw47" path="res://Assets/Sprites/1 Smith/Smith_all.png" id="2_jmcll"]
+[ext_resource type="AudioStream" uid="uid://c04kbnpe0u6j2" path="res://Assets/SFX/DSGNTonl_USABLE-Coin Spend_HY_PC-002.wav" id="3_jmcll"]
+[ext_resource type="AudioStream" uid="uid://hgfo82x371i7" path="res://Assets/SFX/DSGNTonl_USABLE-Coin Spend_HY_PC-003.wav" id="4_4wape"]
+[ext_resource type="AudioStream" uid="uid://wkblliqj5pms" path="res://Assets/SFX/DSGNTonl_USABLE-Coin Spend_HY_PC-004.wav" id="5_t26db"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t26db"]
 radius = 8.0
 height = 34.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i5acl"]
+streams_count = 3
+stream_0/stream = ExtResource("3_jmcll")
+stream_1/stream = ExtResource("4_4wape")
+stream_2/stream = ExtResource("5_t26db")
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4wape"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_t26db"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_fk5o5"]
+resource_name = "hammer"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_anvil_hit_sound"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t26db"]
+_data = {
+&"RESET": SubResource("Animation_4wape"),
+&"hammer": SubResource("Animation_fk5o5"),
+&"idle": SubResource("Animation_jmcll"),
+&"walk": SubResource("Animation_t26db")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jmcll"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ft8w5"]
+animation = &"hammer"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wape"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t26db"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fk5o5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_825xp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ji083"]
+advance_mode = 2
+advance_expression = "!is_equal_approx(velocity.x, 0.0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kmp4"]
+advance_mode = 2
+advance_expression = "is_equal_approx(velocity.x, 0.0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h54ih"]
+advance_mode = 2
+advance_expression = "_is_smithing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ude3g"]
+advance_mode = 2
+advance_expression = "_is_smithing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jmcll"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wape"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i5acl"]
+states/RESET/node = SubResource("AnimationNodeAnimation_jmcll")
+states/RESET/position = Vector2(304.8, 97.2)
+states/Start/position = Vector2(156, 100)
+states/hammer/node = SubResource("AnimationNodeAnimation_ft8w5")
+states/hammer/position = Vector2(516.8, 239.6)
+states/idle/node = SubResource("AnimationNodeAnimation_4wape")
+states/idle/position = Vector2(451.2, 107.6)
+states/walk/node = SubResource("AnimationNodeAnimation_t26db")
+states/walk/position = Vector2(594.4, 111.6)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "RESET", "idle", SubResource("AnimationNodeStateMachineTransition_825xp"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ji083"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_0kmp4"), "idle", "hammer", SubResource("AnimationNodeStateMachineTransition_h54ih"), "walk", "hammer", SubResource("AnimationNodeStateMachineTransition_ude3g"), "hammer", "walk", SubResource("AnimationNodeStateMachineTransition_jmcll"), "hammer", "idle", SubResource("AnimationNodeStateMachineTransition_4wape")]
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_ft8w5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4wape")
-animation = &"hammer"
-autoplay = "idle"
-frame = 3
-frame_progress = 0.880009
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jmcll")
+hframes = 6
+vframes = 5
+frame = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 7)
 shape = SubResource("CapsuleShape2D_t26db")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_i5acl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t26db")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_i5acl")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_player_animation_finished"]

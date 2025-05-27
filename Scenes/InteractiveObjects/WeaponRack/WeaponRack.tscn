@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://uoxapmweoqce"]
+[gd_scene load_steps=8 format=3 uid="uid://uoxapmweoqce"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_g2egu"]
 [ext_resource type="Texture2D" uid="uid://cwdugkpwb5654" path="res://Assets/Sprites/2 Objects/Rack.png" id="2_eibmt"]
 [ext_resource type="Script" uid="uid://bh4d1bnhixjwd" path="res://Scenes/InteractiveObjects/WeaponRack/WeaponRack.gd" id="2_lu4g5"]
+[ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="4_lu4g5"]
+[ext_resource type="Texture2D" uid="uid://bxttc8xs055h5" path="res://Assets/Sprites/4 Icons/Coin.png" id="5_pdh7m"]
+[ext_resource type="AudioStream" uid="uid://cg7gtgyo3mqao" path="res://Assets/SFX/DSGNTonl_USABLE-Magic Coin_HY_PC-003.wav" id="6_coaq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu4g5"]
 
@@ -16,3 +19,9 @@ texture = ExtResource("2_eibmt")
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_lu4g5")
+
+[node name="PickUpItem" parent="." index="2" instance=ExtResource("4_lu4g5")]
+position = Vector2(0, -21)
+scale = Vector2(0.6, 0.6)
+sprite = ExtResource("5_pdh7m")
+pickup_sound = ExtResource("6_coaq8")

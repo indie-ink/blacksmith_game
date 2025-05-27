@@ -10,7 +10,7 @@ var _current_item_price := 13
 func _enter_tree() -> void:
 	SignalHub.ore_taken.connect(handle_ore_taken)
 	SignalHub.ore_heated.connect(handle_ore_heated)
-	SignalHub.hammer_smashed.connect(handle_hammer_smashed)
+	SignalHub.anvil_passed.connect(handle_anvil_passed)
 	SignalHub.weapon_cooled.connect(handle_weapon_cooled)
 	SignalHub.weapon_sold.connect(handle_weapon_sold)
 
@@ -31,8 +31,8 @@ func handle_ore_heated() -> void:
 	set_current_stage(CraftingStage.FURNACE)
 
 
-func handle_hammer_smashed() -> void:
-	print("Hammer smashed")
+func handle_anvil_passed() -> void:
+	print("Anvil passed")
 	set_current_stage(CraftingStage.ANVIL)
 
 

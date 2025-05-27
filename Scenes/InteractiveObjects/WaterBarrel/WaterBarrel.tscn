@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctfmedhb7n8g7"]
+[gd_scene load_steps=16 format=3 uid="uid://ctfmedhb7n8g7"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_vju3h"]
 [ext_resource type="Script" uid="uid://beeo6hovtid32" path="res://Scenes/InteractiveObjects/WaterBarrel/WaterBarrel.gd" id="2_q6by5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ck0jxo3j4gkfk" path="res://Assets/Sprites/2 Objects/Barrel.png" id="3_q6by5"]
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="5_o0c0a"]
 [ext_resource type="Texture2D" uid="uid://cmtaabqy2bcwo" path="res://Assets/Sprites/4 Icons/Sword_1.png" id="6_mhs57"]
+[ext_resource type="AudioStream" uid="uid://c7nppojtgrdpj" path="res://Assets/SFX/DSGNMisc_PROJECTILE-Hollow Tornado_HY_PC-001.wav" id="7_mhs57"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y524"]
 atlas = ExtResource("2_v3rom")
@@ -63,11 +64,14 @@ size = Vector2(16, 20.625)
 [node name="WaterBarrel" instance=ExtResource("1_vju3h")]
 script = ExtResource("2_q6by5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+[node name="SteamAnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 visible = false
 position = Vector2(0, -27)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_o0c0a")
+autoplay = "default"
+frame = 3
+frame_progress = 0.117468
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 position = Vector2(0, -0.75)
@@ -81,3 +85,6 @@ shape = SubResource("RectangleShape2D_v3rom")
 position = Vector2(0, -22)
 scale = Vector2(0.6, 0.6)
 sprite = ExtResource("6_mhs57")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("7_mhs57")

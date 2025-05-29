@@ -29,9 +29,10 @@ func request_player_hammer_hit() -> void:
 
 
 func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
-	if action_type == Player.ActionTypes.MINING:
-		generate_stone_particles()
-		spawn_ore()
+	if action_type != Player.ActionTypes.MINING: return
+
+	generate_stone_particles()
+	spawn_ore()
 
 func handle_ore_taken() -> void:
 	_current_ore_amount += 1

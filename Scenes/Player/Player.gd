@@ -2,7 +2,7 @@ class_name Player
 
 extends CharacterBody2D
 
-enum ActionTypes { MINING, SMITHING }
+enum ActionTypes { MINING, HIT_ANVIL }
 
 const GRAVITY := 600
 const RUN_SPEED := 80.0
@@ -48,6 +48,12 @@ func handle_player_action_requested(action_type: ActionTypes) -> void:
 		await get_tree().create_timer(HAMMER_HIT_TIME).timeout
 		
 		SignalHub.emit_player_action_performed(ActionTypes.MINING)
+	elif action_type == ActionTypes.HIT_ANVIL and !_is_hitting_with_hammer:
+		_is_hitting_with_hammer = true
+		
+		await get_tree().create_timer(HAMMER_HIT_TIME).timeout
+		
+		SignalHub.emit_player_action_performed(ActionTypes.HIT_ANVIL)
 
 
 func play_anvil_hit_sound() -> void:

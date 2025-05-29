@@ -11,7 +11,7 @@ const WAIT_AFTER_HIT_TIME := 0.7
 var _total_hits := 0
 
 
-func handle_action() -> void:
+func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.ANVIL):
 		_total_hits += 1
 

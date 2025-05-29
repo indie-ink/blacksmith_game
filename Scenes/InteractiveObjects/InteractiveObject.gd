@@ -7,10 +7,10 @@ var is_player_in_range := false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("action") and is_player_in_range:
-		handle_action()
+		handle_interaction()
 
 
-func handle_action() -> void:
+func handle_interaction() -> void:
 	pass
 
 

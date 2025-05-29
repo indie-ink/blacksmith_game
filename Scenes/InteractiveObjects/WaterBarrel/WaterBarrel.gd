@@ -6,7 +6,7 @@ extends InteractiveObject
 @onready var steam_animated_sprite_2d: AnimatedSprite2D = $SteamAnimatedSprite2D
 @onready var sound: AudioStreamPlayer2D = $Sound
 
-func handle_action() -> void:
+func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.WATER_BARREL):
 		steam_animated_sprite_2d.show()
 		sound.play()

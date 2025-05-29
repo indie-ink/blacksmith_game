@@ -9,7 +9,7 @@ extends InteractiveObject
 
 var _is_activated := false
 
-func handle_action() -> void:
+func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.FURNACE):
 		process_ore()
 

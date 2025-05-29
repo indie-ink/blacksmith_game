@@ -89,9 +89,3 @@ initial_velocity_min = 169.5
 initial_velocity_max = 210.16
 angular_velocity_min = 161.09
 angular_velocity_max = 268.47
-
-[node name="HitTimeoutTimer" type="Timer" parent="." index="6"]
-wait_time = 3.0
-one_shot = true
-
-[connection signal="timeout" from="HitTimeoutTimer" to="." method="_on_hit_timeout_timer_timeout"]

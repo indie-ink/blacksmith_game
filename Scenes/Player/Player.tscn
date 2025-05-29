@@ -134,11 +134,11 @@ advance_expression = "is_equal_approx(velocity.x, 0.0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h54ih"]
 advance_mode = 2
-advance_expression = "_is_smithing"
+advance_expression = "_is_hitting_with_hammer"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ude3g"]
 advance_mode = 2
-advance_expression = "_is_smithing"
+advance_expression = "_is_hitting_with_hammer"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jmcll"]
 switch_mode = 2

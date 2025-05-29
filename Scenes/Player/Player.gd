@@ -16,7 +16,6 @@ var _is_hitting_with_hammer := false
 
 
 func _enter_tree() -> void:
-	SignalHub.hammer_hit.connect(handle_hammer_hit)
 	SignalHub.player_action_requested.connect(handle_player_action_requested)
 
 
@@ -35,10 +34,6 @@ func process_movement_input() -> void:
 	
 	if not is_equal_approx(velocity.x, 0.0):
 		sprite_2d.flip_h = velocity.x < 0
-
-
-func handle_hammer_hit() -> void:
-	_is_hitting_with_hammer = true
 
 
 func handle_player_action_requested(action_type: ActionTypes) -> void:

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const GRAVITY := 600
 const RUN_SPEED := 80.0
+const HAMMER_HIT_TIME := 0.9
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -14,7 +15,7 @@ var _is_smithing := false
 
 
 func _enter_tree() -> void:
-	SignalHub.anvil_hit.connect(handle_anvil_hit)
+	SignalHub.hammer_hit.connect(handle_hammer_hit)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,7 +35,7 @@ func process_movement_input() -> void:
 		sprite_2d.flip_h = velocity.x < 0
 
 
-func handle_anvil_hit() -> void:
+func handle_hammer_hit() -> void:
 	_is_smithing = true
 
 

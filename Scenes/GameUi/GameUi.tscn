@@ -15,12 +15,14 @@ outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Game UI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_anolp")
 
 [node name="CoinImage" type="TextureRect" parent="."]
@@ -51,7 +53,7 @@ offset_right = 330.0
 offset_bottom = 181.0
 scale = Vector2(0.123082, 0.123082)
 text = "How to craft:
-1. Take an or from the Sieve
+1. Hit Ore Pile to dig ore
 2. Heat it in the Furnace
 3. Make your weapon on the anvil
 4. Cool down the weapon in the water barrel

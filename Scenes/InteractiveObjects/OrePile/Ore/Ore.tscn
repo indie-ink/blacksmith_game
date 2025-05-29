@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://lw07f5e7mt32"]
+
+[ext_resource type="Script" uid="uid://dqr1s66a835pa" path="res://Scenes/InteractiveObjects/OrePile/Ore/Ore.gd" id="1_8wnjc"]
+[ext_resource type="Texture2D" uid="uid://cpll88gwvxg60" path="res://Assets/Sprites/2 Objects/stone_1.png" id="2_58k7y"]
+[ext_resource type="PackedScene" uid="uid://b2dhw4l4q1xe7" path="res://Scenes/Shared/LifeTimer/LifeTimer.tscn" id="3_58k7y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wnjc"]
+radius = 9.0
+
+[node name="Ore" type="RigidBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 0
+input_pickable = true
+mass = 0.001
+gravity_scale = 0.2
+script = ExtResource("1_8wnjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.560283, 0.767479, 0.926752, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_58k7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_8wnjc")
+
+[node name="LifeTimer" parent="." instance=ExtResource("3_58k7y")]
+life_span = 10.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

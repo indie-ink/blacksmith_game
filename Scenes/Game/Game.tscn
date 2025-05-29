@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b16v7j34u1ag2" path="res://Assets/Sprites/2 Objects/House.png" id="8_6581v"]
 [ext_resource type="PackedScene" uid="uid://uoxapmweoqce" path="res://Scenes/InteractiveObjects/WeaponRack/WeaponRack.tscn" id="10_6581v"]
 [ext_resource type="PackedScene" uid="uid://c2xgqtgpeu7om" path="res://Scenes/InteractiveObjects/Furnace/Furnace.tscn" id="10_bsqcq"]
-[ext_resource type="PackedScene" uid="uid://dbhkaakkxqrf0" path="res://Scenes/InteractiveObjects/Sieve/Sieve.tscn" id="10_edkrd"]
+[ext_resource type="PackedScene" uid="uid://dbhkaakkxqrf0" path="res://Scenes/InteractiveObjects/OrePile/OreRock.tscn" id="10_edkrd"]
 [ext_resource type="PackedScene" uid="uid://ctfmedhb7n8g7" path="res://Scenes/InteractiveObjects/WaterBarrel/WaterBarrel.tscn" id="10_fg52j"]
 [ext_resource type="PackedScene" uid="uid://ct75fsh8ykn2q" path="res://Scenes/InteractiveObjects/Anvil/Anvil.tscn" id="10_jf0ra"]
 [ext_resource type="PackedScene" uid="uid://l3egkl0fu464" path="res://Scenes/GameUi/GameUi.tscn" id="11_10ki7"]
@@ -18,7 +18,7 @@
 size = Vector2(11, 370)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3kpf"]
-size = Vector2(28, 22)
+size = Vector2(28, 52)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xbxml"]
 texture = ExtResource("2_gwu2e")
@@ -89,7 +89,7 @@ position = Vector2(485, 155)
 shape = SubResource("RectangleShape2D_xbxml")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
-position = Vector2(472, 279)
+position = Vector2(406, 272)
 shape = SubResource("RectangleShape2D_y3kpf")
 
 [node name="Decorations" type="Node2D" parent="."]
@@ -99,7 +99,7 @@ position = Vector2(307, 240)
 texture = ExtResource("8_6581v")
 
 [node name="Tree" type="Sprite2D" parent="Decorations"]
-position = Vector2(437, 237)
+position = Vector2(444, 237)
 texture = ExtResource("3_y3kpf")
 region_enabled = true
 region_rect = Rect2(15, 10, 76, 102)
@@ -134,8 +134,10 @@ tile_set = SubResource("TileSet_3k6gv")
 
 [node name="InteractiveObjects" type="Node2D" parent="."]
 
-[node name="Sieve" parent="InteractiveObjects" instance=ExtResource("10_edkrd")]
-position = Vector2(395, 264)
+[node name="OreRock" parent="InteractiveObjects" instance=ExtResource("10_edkrd")]
+z_index = 10
+position = Vector2(397, 266)
+hammer_hit_timeout = 2.0
 
 [node name="Furnace" parent="InteractiveObjects" instance=ExtResource("10_bsqcq")]
 position = Vector2(287, 240)
@@ -143,7 +145,6 @@ position = Vector2(287, 240)
 [node name="Anvil" parent="InteractiveObjects" instance=ExtResource("10_jf0ra")]
 z_index = 10
 position = Vector2(216, 281)
-times_to_hit = 3
 
 [node name="WaterBarrel" parent="InteractiveObjects" instance=ExtResource("10_fg52j")]
 position = Vector2(255, 277)

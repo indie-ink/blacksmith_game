@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbhkaakkxqrf0"]
+
+[ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_2yplf"]
+[ext_resource type="Script" uid="uid://dglcw1uudw0bu" path="res://Scenes/InteractiveObjects/OrePile/OreRock.gd" id="2_4kw2c"]
+[ext_resource type="Texture2D" uid="uid://d4but5f6mr6vh" path="res://Assets/Sprites/4 Icons/Ore_1.png" id="4_7jc7u"]
+[ext_resource type="Texture2D" uid="uid://cpll88gwvxg60" path="res://Assets/Sprites/2 Objects/stone_1.png" id="6_2c5xx"]
+[ext_resource type="Texture2D" uid="uid://cni1vq76s2bkr" path="res://Assets/Sprites/2 Objects/Rock.PNG" id="6_ggks2"]
+[ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="6_q4s05"]
+[ext_resource type="Texture2D" uid="uid://rt8mrnc3fa41" path="res://Assets/Sprites/2 Objects/stone_2.png" id="7_p8m6e"]
+[ext_resource type="Texture2D" uid="uid://c6kfb8kwxdify" path="res://Assets/Sprites/2 Objects/stone_3.png" id="8_mqv3h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75ly0"]
+size = Vector2(34, 24)
+
+[node name="OreRock" node_paths=PackedStringArray("particles") instance=ExtResource("1_2yplf")]
+collision_layer = 2
+script = ExtResource("2_4kw2c")
+particles = [NodePath("CPUParticles2D"), NodePath("CPUParticles2D2"), NodePath("CPUParticles2D3")]
+ore_needed_amount = 3
+hammer_hit_timeout = 2.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2, 12)
+shape = SubResource("RectangleShape2D_75ly0")
+
+[node name="PickUpItem" parent="." index="1" instance=ExtResource("6_q4s05")]
+position = Vector2(1, -13)
+scale = Vector2(0.5, 0.5)
+sprite = ExtResource("4_7jc7u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+position = Vector2(3, 11)
+scale = Vector2(0.826923, 0.826923)
+texture = ExtResource("6_ggks2")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="3"]
+z_index = 5
+position = Vector2(-12, 4)
+emitting = false
+amount = 5
+texture = ExtResource("6_2c5xx")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.55
+direction = Vector2(0, -1)
+spread = 10.24
+gravity = Vector2(0, 200)
+initial_velocity_min = 203.4
+initial_velocity_max = 254.23
+angular_velocity_min = 161.09
+angular_velocity_max = 268.47
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." index="4"]
+z_index = 5
+position = Vector2(-12, 4)
+emitting = false
+amount = 5
+texture = ExtResource("7_p8m6e")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.55
+direction = Vector2(0, -1)
+spread = 10.24
+gravity = Vector2(0, 200)
+initial_velocity_min = 193.23
+initial_velocity_max = 233.89
+angular_velocity_min = 161.09
+angular_velocity_max = 268.47
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="." index="5"]
+z_index = 5
+position = Vector2(-12, 4)
+emitting = false
+amount = 5
+texture = ExtResource("8_mqv3h")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.55
+direction = Vector2(0, -1)
+spread = 10.24
+gravity = Vector2(0, 200)
+initial_velocity_min = 169.5
+initial_velocity_max = 210.16
+angular_velocity_min = 161.09
+angular_velocity_max = 268.47
+
+[node name="HitTimeoutTimer" type="Timer" parent="." index="6"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="HitTimeoutTimer" to="." method="_on_hit_timeout_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://lw07f5e7mt32"]
+
+[ext_resource type="Texture2D" uid="uid://d4but5f6mr6vh" path="res://Assets/Sprites/4 Icons/Ore_1.png" id="1_5elgw"]
+[ext_resource type="Script" uid="uid://dqr1s66a835pa" path="res://Scenes/InteractiveObjects/OrePile/Ore/Ore.gd" id="1_8wnjc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wnjc"]
+radius = 9.0
+
+[node name="Ore" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 0.001
+gravity_scale = 0.2
+script = ExtResource("1_8wnjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_5elgw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8wnjc")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -2,13 +2,7 @@ class_name InteractiveObject
 
 extends Area2D
 
-const INTERACTIVE_OBJECTS_GROUP: String = "InteractiveObjects"
-
 var is_player_in_range := false
-
-
-func _enter_tree() -> void:
-	add_to_group(INTERACTIVE_OBJECTS_GROUP)
 
 
 func _unhandled_input(event: InputEvent) -> void:

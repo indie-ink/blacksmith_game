@@ -1,6 +1,6 @@
 extends Node
 
-enum CraftingStage { IDLE, SIEVE, FURNACE, ANVIL, WATER_BARREL }
+enum CraftingStage { IDLE, ORE_ROCK, FURNACE, ANVIL, WATER_BARREL }
 
 var _current_stage: CraftingStage = CraftingStage.IDLE
 var _balance := 0
@@ -8,7 +8,7 @@ var _current_item_price := 13
 
 
 func _enter_tree() -> void:
-	SignalHub.ore_taken.connect(handle_ore_taken)
+	SignalHub.ore_stage_passed.connect(handle_ore_stage_passed)
 	SignalHub.ore_heated.connect(handle_ore_heated)
 	SignalHub.anvil_passed.connect(handle_anvil_passed)
 	SignalHub.weapon_cooled.connect(handle_weapon_cooled)
@@ -21,9 +21,9 @@ func initial_setup() -> void:
 	set_current_stage(CraftingStage.IDLE)
 
 
-func handle_ore_taken() -> void:
+func handle_ore_stage_passed() -> void:
 	print("Ore taken")
-	set_current_stage(CraftingStage.SIEVE)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 func handle_ore_heated() -> void:
@@ -61,9 +61,9 @@ func set_current_stage(new_stage: CraftingStage) -> void:
 
 func is_stage_allowed(stage: CraftingStage) -> bool:
 	if _current_stage == CraftingStage.IDLE:
-		return stage == CraftingStage.SIEVE
+		return stage == CraftingStage.ORE_ROCK
 
-	if _current_stage == CraftingStage.SIEVE:
+	if _current_stage == CraftingStage.ORE_ROCK:
 		return stage == CraftingStage.FURNACE
 
 	if _current_stage == CraftingStage.FURNACE:

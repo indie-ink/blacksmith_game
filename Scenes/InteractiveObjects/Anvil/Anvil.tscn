@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct75fsh8ykn2q"]
+[gd_scene load_steps=8 format=3 uid="uid://ct75fsh8ykn2q"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_h7ema"]
 [ext_resource type="Script" uid="uid://o8vw5yuadbii" path="res://Scenes/InteractiveObjects/Anvil/Anvil.gd" id="2_3ir3a"]
 [ext_resource type="Texture2D" uid="uid://bju7dgetpcvcl" path="res://Assets/Sprites/2 Objects/Anvil.png" id="2_fps4c"]
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="4_3w70b"]
 [ext_resource type="Texture2D" uid="uid://c3gabev15du63" path="res://Assets/Sprites/4 Icons/Sword_2.png" id="5_gsvfe"]
+[ext_resource type="Texture2D" uid="uid://c883y4s35ae1f" path="res://Assets/Sprites/2 Objects/spark_2.png" id="6_gsvfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fps4c"]
 size = Vector2(16, 13)
@@ -24,3 +25,28 @@ shape = SubResource("RectangleShape2D_fps4c")
 position = Vector2(0, -15)
 scale = Vector2(0.6, 0.6)
 sprite = ExtResource("5_gsvfe")
+
+[node name="SparksParticles" type="CPUParticles2D" parent="." index="3"]
+position = Vector2(0, -6)
+emitting = false
+amount = 10
+texture = ExtResource("6_gsvfe")
+lifetime = 0.65
+one_shot = true
+explosiveness = 1.0
+randomness = 0.79
+lifetime_randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 2.08
+direction = Vector2(0, -1)
+spread = 59.04
+gravity = Vector2(0, 100)
+initial_velocity_min = 23.73
+initial_velocity_max = 54.23
+angular_velocity_min = 73.22
+angular_velocity_max = 117.23
+scale_amount_min = 0.7
+scale_amount_max = 1.5
+color = Color(0.999998, 0.994515, 0.572855, 1)
+hue_variation_min = -0.13
+hue_variation_max = 0.36

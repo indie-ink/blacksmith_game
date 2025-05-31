@@ -9,7 +9,8 @@ var _current_item_price := 13
 
 func _enter_tree() -> void:
 	SignalHub.ore_stage_passed.connect(handle_ore_stage_passed)
-	SignalHub.ore_heated.connect(handle_ore_heated)
+	SignalHub.ore_heat_passed.connect(handle_ore_heat_passed)
+	SignalHub.ore_heat_failed.connect(handle_ore_heat_failed)
 	SignalHub.anvil_passed.connect(handle_anvil_passed)
 	SignalHub.weapon_cooled.connect(handle_weapon_cooled)
 	SignalHub.weapon_sold.connect(handle_weapon_sold)
@@ -26,9 +27,14 @@ func handle_ore_stage_passed() -> void:
 	set_current_stage(CraftingStage.ORE_ROCK)
 
 
-func handle_ore_heated() -> void:
+func handle_ore_heat_passed() -> void:
 	print("Ore heated")
 	set_current_stage(CraftingStage.FURNACE)
+
+
+func handle_ore_heat_failed() -> void:
+	print("Ore heat FAILED")
+	set_current_stage(CraftingStage.IDLE)
 
 
 func handle_anvil_passed() -> void:

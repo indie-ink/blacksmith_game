@@ -37,7 +37,8 @@ func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 func handle_ore_taken() -> void:
 	_current_ore_amount += 1
 	
-	if _current_ore_amount == ore_needed_amount:
+	if _current_ore_amount >= ore_needed_amount:
+		_current_ore_amount = 0
 		SignalHub.emit_ore_stage_passed()
 		pick_up_item.handle_picked_up()
 

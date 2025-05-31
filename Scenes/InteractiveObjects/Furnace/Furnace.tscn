@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2xgqtgpeu7om"]
+[gd_scene load_steps=16 format=3 uid="uid://c2xgqtgpeu7om"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_cmx2v"]
 [ext_resource type="Texture2D" uid="uid://w1c64me1ojye" path="res://Assets/Sprites/2 Objects/Forge_animation.png" id="2_bi0m0"]
@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://5c5cbgyigbtj" path="res://Assets/SFX/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-003.wav" id="4_t38jh"]
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="5_og8r8"]
 [ext_resource type="Texture2D" uid="uid://fnayqmurj33j" path="res://Assets/Sprites/2 Objects/Forge.png" id="6_bwj60"]
+[ext_resource type="Texture2D" uid="uid://ba5kbe38afhrv" path="res://Assets/Sprites/2 Objects/Thermometer.png" id="7_su4gw"]
+[ext_resource type="Texture2D" uid="uid://d4dnui2dbdd2v" path="res://Assets/Sprites/2 Objects/Thermometer_Texture_empty.png" id="8_junjh"]
+[ext_resource type="Texture2D" uid="uid://j2wejbfwhb8d" path="res://Assets/Sprites/2 Objects/Thermometer_Texture_filled.png" id="9_bdw0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0nay2"]
 atlas = ExtResource("2_bi0m0")
@@ -48,6 +51,12 @@ size = Vector2(17, 22)
 
 [node name="Furnace" instance=ExtResource("1_cmx2v")]
 script = ExtResource("2_t38jh")
+heat_power = 16.0
+heat_decrease_power = 3.0
+min_heat = 60.0
+max_heat = 79.0
+time_to_overheat = 2.0
+time_to_succeed = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_t38jh")
@@ -67,5 +76,53 @@ z_index = 1
 position = Vector2(-4, 16)
 scale = Vector2(0.6, 0.6)
 
-[node name="ForgeDefault" type="Sprite2D" parent="." index="4"]
+[node name="ForgeWithoutFire" type="Sprite2D" parent="." index="4"]
 texture = ExtResource("6_bwj60")
+
+[node name="Thermometer" type="Sprite2D" parent="." index="5"]
+visible = false
+position = Vector2(-11.7273, -35.9091)
+scale = Vector2(0.681818, 0.681818)
+texture = ExtResource("7_su4gw")
+offset = Vector2(-7, 12)
+
+[node name="ThermometerProgress" type="TextureProgressBar" parent="Thermometer" index="0"]
+offset_left = -10.0
+offset_top = -21.0
+offset_right = -4.0
+offset_bottom = 33.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("8_junjh")
+texture_progress = ExtResource("9_bdw0g")
+
+[node name="ColorRect2" type="ColorRect" parent="Thermometer" index="1"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -4.0
+offset_bottom = -8.0
+color = Color(0.164706, 1, 0.0588235, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Thermometer" index="2"]
+offset_left = -10.0
+offset_right = -4.0
+offset_bottom = 2.0
+color = Color(0.164706, 1, 0.0588235, 1)
+
+[node name="HeatTimeoutTimer" type="Timer" parent="." index="6"]
+wait_time = 0.1
+one_shot = true
+
+[node name="HeatDecreaseTimer" type="Timer" parent="." index="7"]
+wait_time = 0.2
+
+[node name="OverheatTimer" type="Timer" parent="." index="8"]
+
+[node name="SuccessTimer" type="Timer" parent="." index="9"]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="HeatTimeoutTimer" to="." method="_on_heat_timeout_timer_timeout"]
+[connection signal="timeout" from="HeatDecreaseTimer" to="." method="_on_heat_decrease_timer_timeout"]
+[connection signal="timeout" from="OverheatTimer" to="." method="_on_overheat_timer_timeout"]
+[connection signal="timeout" from="SuccessTimer" to="." method="_on_success_timer_timeout"]

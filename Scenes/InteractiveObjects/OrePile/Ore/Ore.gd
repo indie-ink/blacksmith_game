@@ -6,6 +6,9 @@ const LAUNCH_SPEED_X_RSNGE := 60.0
 const LAUNCH_SPEED_Y := -200.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sound: AudioStreamPlayer2D = $Sound
+
+var _is_collected := false
 
 
 func launch() -> void:
@@ -18,6 +21,13 @@ func launch() -> void:
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if !_is_collected and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_is_collected = true
+		hide()
+		sound.play()
 		SignalHub.emit_ore_taken()
-		call_deferred("queue_free")
+		
+
+
+func _on_sound_finished() -> void:
+	call_deferred("queue_free")

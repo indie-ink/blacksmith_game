@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://lw07f5e7mt32"]
+[gd_scene load_steps=6 format=3 uid="uid://lw07f5e7mt32"]
 
 [ext_resource type="Script" uid="uid://dqr1s66a835pa" path="res://Scenes/InteractiveObjects/OrePile/Ore/Ore.gd" id="1_8wnjc"]
 [ext_resource type="Texture2D" uid="uid://cpll88gwvxg60" path="res://Assets/Sprites/2 Objects/stone_1.png" id="2_58k7y"]
 [ext_resource type="PackedScene" uid="uid://b2dhw4l4q1xe7" path="res://Scenes/Shared/LifeTimer/LifeTimer.tscn" id="3_58k7y"]
+[ext_resource type="AudioStream" uid="uid://c7uqh8j1q4k68" path="res://Assets/SFX/DSGNMisc_HIT-Plastic Zap_HY_PC-002.wav" id="4_7reop"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wnjc"]
 radius = 9.0
@@ -28,4 +29,9 @@ shape = SubResource("CircleShape2D_8wnjc")
 [node name="LifeTimer" parent="." instance=ExtResource("3_58k7y")]
 life_span = 10.0
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7reop")
+volume_db = -7.716
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

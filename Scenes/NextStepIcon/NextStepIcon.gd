@@ -10,6 +10,7 @@ const ICON_BY_STAGE: Dictionary[GameManager.CraftingStage, Resource] = {
 
 @onready var icon_texture: TextureRect = $MarginContainer/IconTexture
 
+
 func _ready() -> void:
 	SignalHub.stage_updated.connect(handle_stage_updated)
 
@@ -18,3 +19,12 @@ func handle_stage_updated(stage: GameManager.CraftingStage) -> void:
 	if !ICON_BY_STAGE[stage]: return
 	
 	icon_texture.texture = ICON_BY_STAGE[stage]
+	flash_icon()
+
+
+func flash_icon() -> void:
+	var tween = create_tween()
+	
+	tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.1)
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.1)
+	

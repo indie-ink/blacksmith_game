@@ -31,7 +31,6 @@ life_span = 10.0
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7reop")
-volume_db = -7.716
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

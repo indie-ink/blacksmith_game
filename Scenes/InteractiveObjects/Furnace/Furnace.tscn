@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2xgqtgpeu7om"]
+[gd_scene load_steps=17 format=3 uid="uid://c2xgqtgpeu7om"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_cmx2v"]
 [ext_resource type="Texture2D" uid="uid://w1c64me1ojye" path="res://Assets/Sprites/2 Objects/Forge_animation.png" id="2_bi0m0"]
-[ext_resource type="Script" uid="uid://plbwcede3dee" path="res://Scenes/InteractiveObjects/Furnace/Furnace.gd" id="2_t38jh"]
+[ext_resource type="Script" uid="uid://plbwcede3dee" path="res://Scenes/InteractiveObjects/OrePile/Furnace.gd" id="2_t38jh"]
 [ext_resource type="AudioStream" uid="uid://5c5cbgyigbtj" path="res://Assets/SFX/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-003.wav" id="4_t38jh"]
+[ext_resource type="AudioStream" uid="uid://bq3bie0a17hqk" path="res://Assets/SFX/DSGNTonl_SKILL IMPACT-Coin Laser_HY_PC-005.wav" id="5_bdw0g"]
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="5_og8r8"]
 [ext_resource type="Texture2D" uid="uid://fnayqmurj33j" path="res://Assets/Sprites/2 Objects/Forge.png" id="6_bwj60"]
 [ext_resource type="Texture2D" uid="uid://ba5kbe38afhrv" path="res://Assets/Sprites/2 Objects/Thermometer.png" id="7_su4gw"]
@@ -67,19 +68,22 @@ frame_progress = 0.479845
 position = Vector2(-3.5, 36)
 shape = SubResource("RectangleShape2D_bi0m0")
 
-[node name="Sound" type="AudioStreamPlayer2D" parent="." index="2"]
+[node name="HeatSound" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("4_t38jh")
 volume_db = -6.5
 
-[node name="PickUpItem" parent="." index="3" instance=ExtResource("5_og8r8")]
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("5_bdw0g")
+
+[node name="PickUpItem" parent="." index="4" instance=ExtResource("5_og8r8")]
 z_index = 1
 position = Vector2(-4, 16)
 scale = Vector2(0.6, 0.6)
 
-[node name="ForgeWithoutFire" type="Sprite2D" parent="." index="4"]
+[node name="ForgeWithoutFire" type="Sprite2D" parent="." index="5"]
 texture = ExtResource("6_bwj60")
 
-[node name="Thermometer" type="Sprite2D" parent="." index="5"]
+[node name="Thermometer" type="Sprite2D" parent="." index="6"]
 visible = false
 position = Vector2(-11.7273, -35.9091)
 scale = Vector2(0.681818, 0.681818)
@@ -101,24 +105,24 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = -4.0
 offset_bottom = -8.0
-color = Color(0.164706, 1, 0.0588235, 1)
+color = Color(0.147236, 0.476963, 9.62615e-08, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Thermometer" index="2"]
 offset_left = -10.0
 offset_right = -4.0
 offset_bottom = 2.0
-color = Color(0.164706, 1, 0.0588235, 1)
+color = Color(0.147236, 0.476963, 9.62615e-08, 1)
 
-[node name="HeatTimeoutTimer" type="Timer" parent="." index="6"]
+[node name="HeatTimeoutTimer" type="Timer" parent="." index="7"]
 wait_time = 0.1
 one_shot = true
 
-[node name="HeatDecreaseTimer" type="Timer" parent="." index="7"]
+[node name="HeatDecreaseTimer" type="Timer" parent="." index="8"]
 wait_time = 0.2
 
-[node name="OverheatTimer" type="Timer" parent="." index="8"]
+[node name="OverheatTimer" type="Timer" parent="." index="9"]
 
-[node name="SuccessTimer" type="Timer" parent="." index="9"]
+[node name="SuccessTimer" type="Timer" parent="." index="10"]
 wait_time = 4.0
 one_shot = true
 

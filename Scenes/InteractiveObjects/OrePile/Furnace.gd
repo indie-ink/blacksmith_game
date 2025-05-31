@@ -9,7 +9,8 @@ extends InteractiveObject
 @export var time_to_overheat := 2.0
 @export var time_to_succeed := 4.0
 
-@onready var sound: AudioStreamPlayer2D = $Sound
+@onready var heat_sound: AudioStreamPlayer2D = $HeatSound
+@onready var fail_sound: AudioStreamPlayer2D = $FailSound
 
 @onready var pick_up_item: PickUpItem = $PickUpItem
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -55,7 +56,7 @@ func heat_furnace() -> void:
 
 func increase_heat() -> void:
 	thermometer_progress.value += heat_power
-	sound.play()
+	heat_sound.play()
 	heat_timeout_timer.start()
 	show_fire_in_forge()
 
@@ -112,6 +113,7 @@ func on_ore_process_success() -> void:
 
 
 func on_ore_process_fail() -> void:
+	fail_sound.play()
 	stop_stage()
 	SignalHub.emit_ore_heat_failed()
 

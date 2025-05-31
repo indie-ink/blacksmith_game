@@ -1,8 +1,8 @@
 extends Node
 
-enum CraftingStage { IDLE, ORE_ROCK, FURNACE, ANVIL, WATER_BARREL }
+enum CraftingStage { ORE_ROCK, FURNACE, ANVIL, WATER_BARREL, WEAPON_RACK }
 
-var _current_stage: CraftingStage = CraftingStage.IDLE
+var _current_stage: CraftingStage = CraftingStage.ORE_ROCK
 var _balance := 0
 var _current_item_price := 13
 
@@ -19,39 +19,39 @@ func _enter_tree() -> void:
 func initial_setup() -> void:
 	_balance = 0
 	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.IDLE)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 func handle_ore_stage_passed() -> void:
 	print("Ore taken")
-	set_current_stage(CraftingStage.ORE_ROCK)
+	set_current_stage(CraftingStage.FURNACE)
 
 
 func handle_ore_heat_passed() -> void:
 	print("Ore heated")
-	set_current_stage(CraftingStage.FURNACE)
+	set_current_stage(CraftingStage.ANVIL)
 
 
 func handle_ore_heat_failed() -> void:
 	print("Ore heat FAILED")
-	set_current_stage(CraftingStage.IDLE)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 func handle_anvil_passed() -> void:
 	print("Anvil passed")
-	set_current_stage(CraftingStage.ANVIL)
+	set_current_stage(CraftingStage.WATER_BARREL)
 
 
 func handle_weapon_cooled() -> void:
 	print("Weapon cooled")
-	set_current_stage(CraftingStage.WATER_BARREL)
+	set_current_stage(CraftingStage.WEAPON_RACK)
 
 
 func handle_weapon_sold() -> void:
 	print("Weapon sold")
 	_balance += _current_item_price
 	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.IDLE)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 func get_current_stage() -> CraftingStage:
@@ -66,20 +66,4 @@ func set_current_stage(new_stage: CraftingStage) -> void:
 
 
 func is_stage_allowed(stage: CraftingStage) -> bool:
-	if _current_stage == CraftingStage.IDLE:
-		return stage == CraftingStage.ORE_ROCK
-
-	if _current_stage == CraftingStage.ORE_ROCK:
-		return stage == CraftingStage.FURNACE
-
-	if _current_stage == CraftingStage.FURNACE:
-		return stage == CraftingStage.ANVIL
-
-	if _current_stage == CraftingStage.ANVIL:
-		return stage == CraftingStage.WATER_BARREL
-
-	if _current_stage == CraftingStage.WATER_BARREL:
-		return stage == CraftingStage.IDLE
-	
-	return false
-	
+	return _current_stage == stage

@@ -1,11 +1,11 @@
 extends TextureRect
 
 const ICON_BY_STAGE: Dictionary[GameManager.CraftingStage, Resource] = {
-	GameManager.CraftingStage.IDLE: preload("res://Assets/Sprites/2 Objects/Rock.PNG"),
-	GameManager.CraftingStage.ORE_ROCK: preload("res://Assets/Sprites/4 Icons/FurnaceIcon.png"),
-	GameManager.CraftingStage.FURNACE: preload("res://Assets/Sprites/4 Icons/AnvilIcon.png"),
-	GameManager.CraftingStage.ANVIL: preload("res://Assets/Sprites/4 Icons/WaterBarrelIcon.png"),
-	GameManager.CraftingStage.WATER_BARREL: preload("res://Assets/Sprites/2 Objects/Rack.png")
+	GameManager.CraftingStage.ORE_ROCK: preload("res://Assets/Sprites/2 Objects/Rock.PNG"),
+	GameManager.CraftingStage.FURNACE: preload("res://Assets/Sprites/4 Icons/FurnaceIcon.png"),
+	GameManager.CraftingStage.ANVIL: preload("res://Assets/Sprites/4 Icons/AnvilIcon.png"),
+	GameManager.CraftingStage.WATER_BARREL: preload("res://Assets/Sprites/4 Icons/WaterBarrelIcon.png"),
+	GameManager.CraftingStage.WEAPON_RACK: preload("res://Assets/Sprites/2 Objects/Rack.png")
 }
 
 @onready var icon_texture: TextureRect = $MarginContainer/IconTexture

@@ -33,7 +33,7 @@ func handle_interaction() -> void:
 
 
 func handle_stage_updated(stage: GameManager.CraftingStage) -> void:
-	if stage == GameManager.CraftingStage.ORE_ROCK:
+	if stage == GameManager.CraftingStage.FURNACE:
 		init_stage()
 
 func init_stage() -> void:

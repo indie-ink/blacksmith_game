@@ -11,6 +11,7 @@ const PARTICLE_LIFETIME := 1
 @export var times_to_hit := 3
 
 var _total_hits := 0
+var _stage_entered := false
 
 
 func _enter_tree() -> void:
@@ -19,7 +20,10 @@ func _enter_tree() -> void:
 
 func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.ANVIL):
-		request_player_hammer_hit()
+		if _stage_entered: return
+		
+		_stage_entered = true
+		SignalHub.emit_anvil_stage_started()
 
 
 func request_player_hammer_hit() -> void:

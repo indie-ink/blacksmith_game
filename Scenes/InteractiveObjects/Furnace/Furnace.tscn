@@ -55,7 +55,7 @@ script = ExtResource("2_t38jh")
 initial_heat = 40.0
 heat_power = 16.0
 heat_decrease_power = 3.0
-min_heat = 60.0
+min_heat = 59.0
 max_heat = 79.0
 time_to_overheat = 2.0
 time_to_succeed = 4.0
@@ -85,7 +85,6 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_bwj60")
 
 [node name="Thermometer" type="Sprite2D" parent="." index="6"]
-visible = false
 position = Vector2(-11.7273, -35.9091)
 scale = Vector2(0.681818, 0.681818)
 texture = ExtResource("7_su4gw")
@@ -96,6 +95,7 @@ offset_left = -10.0
 offset_top = -21.0
 offset_right = -4.0
 offset_bottom = 33.0
+value = 59.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_under = ExtResource("8_junjh")
@@ -106,13 +106,13 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = -4.0
 offset_bottom = -8.0
-color = Color(0.147236, 0.476963, 9.62615e-08, 1)
+color = Color(0.164706, 0.0627451, 0.0588235, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="Thermometer" index="2"]
 offset_left = -10.0
 offset_right = -4.0
 offset_bottom = 2.0
-color = Color(0.147236, 0.476963, 9.62615e-08, 1)
+color = Color(0.164706, 0.0627451, 0.0588235, 1)
 
 [node name="HeatTimeoutTimer" type="Timer" parent="." index="7"]
 wait_time = 0.1

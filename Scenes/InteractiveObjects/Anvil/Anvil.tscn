@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct75fsh8ykn2q"]
+[gd_scene load_steps=9 format=3 uid="uid://ct75fsh8ykn2q"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_h7ema"]
 [ext_resource type="Script" uid="uid://o8vw5yuadbii" path="res://Scenes/InteractiveObjects/Anvil/Anvil.gd" id="2_3ir3a"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="4_3w70b"]
 [ext_resource type="Texture2D" uid="uid://c3gabev15du63" path="res://Assets/Sprites/4 Icons/Sword_2.png" id="5_gsvfe"]
 [ext_resource type="Texture2D" uid="uid://c883y4s35ae1f" path="res://Assets/Sprites/2 Objects/spark_2.png" id="6_gsvfe"]
+[ext_resource type="PackedScene" uid="uid://bfgtgmx02cwnk" path="res://Scenes/RythmBar/RythmBar.tscn" id="7_at7w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fps4c"]
 size = Vector2(16, 13)
@@ -50,3 +51,6 @@ scale_amount_max = 1.5
 color = Color(0.999998, 0.994515, 0.572855, 1)
 hue_variation_min = -0.13
 hue_variation_max = 0.36
+
+[node name="RythmBar" parent="." index="4" instance=ExtResource("7_at7w3")]
+position = Vector2(0, -5.5)

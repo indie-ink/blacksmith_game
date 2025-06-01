@@ -5,7 +5,7 @@ extends InteractiveObject
 @export var initial_heat := 40.0
 @export var heat_power := 16.0
 @export var heat_decrease_power := 3.0
-@export var min_heat := 60.0
+@export var min_heat := 59.0
 @export var max_heat := 79.0
 @export var time_to_overheat := 2.0
 @export var time_to_succeed := 4.0

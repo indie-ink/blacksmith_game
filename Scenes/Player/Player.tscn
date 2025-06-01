@@ -188,4 +188,11 @@ tree_root = SubResource("AnimationNodeStateMachine_i5acl")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.6, 1.6)
+limit_left = 2
+limit_top = 0
+limit_right = 478
+limit_bottom = 310
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_player_animation_finished"]

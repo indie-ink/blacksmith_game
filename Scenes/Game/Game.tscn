@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkuk55qe4lroj"]
+[gd_scene load_steps=19 format=4 uid="uid://bkuk55qe4lroj"]
 
+[ext_resource type="Script" uid="uid://cnyqm70p4yxsy" path="res://Scenes/Game/Game.gd" id="1_bsqcq"]
 [ext_resource type="PackedScene" uid="uid://b3uiix57tfhb5" path="res://Scenes/GameBackground/GameBackground.tscn" id="1_rdw05"]
 [ext_resource type="Texture2D" uid="uid://b3g21hg0l01yw" path="res://Assets/Sprites/5 Environment/Tileset.png" id="2_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://bdtlv2dt51te8" path="res://Scenes/Player/Player.tscn" id="3_xbxml"]
@@ -73,6 +74,8 @@ physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_xbxml")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_bsqcq")
+metadata/_edit_vertical_guides_ = [478.0]
 
 [node name="GameBackground" parent="." instance=ExtResource("1_rdw05")]
 position = Vector2(-2, -8)
@@ -144,7 +147,7 @@ position = Vector2(287, 240)
 
 [node name="Anvil" parent="InteractiveObjects" instance=ExtResource("10_jf0ra")]
 z_index = 10
-position = Vector2(216, 281)
+position = Vector2(204, 281)
 
 [node name="WaterBarrel" parent="InteractiveObjects" instance=ExtResource("10_fg52j")]
 position = Vector2(255, 277)
@@ -161,5 +164,5 @@ position = Vector2(350, 264)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_edkrd")
-volume_db = -31.308
+volume_db = -28.289
 autoplay = true

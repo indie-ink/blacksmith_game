@@ -2,6 +2,7 @@ class_name Furnace
 
 extends InteractiveObject
 
+@export var initial_heat := 40.0
 @export var heat_power := 16.0
 @export var heat_decrease_power := 3.0
 @export var min_heat := 60.0
@@ -39,7 +40,7 @@ func handle_stage_updated(stage: GameManager.CraftingStage) -> void:
 
 func init_stage() -> void:
 	thermometer.show()
-	thermometer_progress.value = 0
+	thermometer_progress.value = initial_heat
 	heat_decrease_timer.start()
 
 
@@ -139,7 +140,7 @@ func _on_heat_decrease_timer_timeout() -> void:
 	if thermometer_progress.value <= min_heat:
 		stop_success_timer()
 	
-	if thermometer_progress.value <= 0:
+	if thermometer_progress.value < min_heat:
 		hide_fire_in_forge()
 		stop_overheat_timer()
 

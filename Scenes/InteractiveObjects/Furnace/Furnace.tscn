@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_cmx2v"]
 [ext_resource type="Texture2D" uid="uid://w1c64me1ojye" path="res://Assets/Sprites/2 Objects/Forge_animation.png" id="2_bi0m0"]
-[ext_resource type="Script" uid="uid://plbwcede3dee" path="res://Scenes/InteractiveObjects/OrePile/Furnace.gd" id="2_t38jh"]
+[ext_resource type="Script" uid="uid://plbwcede3dee" path="res://Scenes/InteractiveObjects/Furnace/Furnace.gd" id="2_t38jh"]
 [ext_resource type="AudioStream" uid="uid://5c5cbgyigbtj" path="res://Assets/SFX/DSGNMisc_SKILL RELEASE-Fire Sphere_HY_PC-003.wav" id="4_t38jh"]
 [ext_resource type="AudioStream" uid="uid://bq3bie0a17hqk" path="res://Assets/SFX/DSGNTonl_SKILL IMPACT-Coin Laser_HY_PC-005.wav" id="5_bdw0g"]
 [ext_resource type="PackedScene" uid="uid://d0svjbub8ge2g" path="res://Scenes/PickUpItem/PickUpItem.tscn" id="5_og8r8"]
@@ -52,6 +52,7 @@ size = Vector2(17, 22)
 
 [node name="Furnace" instance=ExtResource("1_cmx2v")]
 script = ExtResource("2_t38jh")
+initial_heat = 40.0
 heat_power = 16.0
 heat_decrease_power = 3.0
 min_heat = 60.0

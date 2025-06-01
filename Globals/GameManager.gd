@@ -4,7 +4,9 @@ enum CraftingStage { ORE_ROCK, FURNACE, ANVIL, WATER_BARREL, WEAPON_RACK }
 
 var _current_stage: CraftingStage = CraftingStage.ORE_ROCK
 var _balance := 0
-var _current_item_price := 13
+var _current_item_price := 20
+var _current_item_min_price := 15
+var _current_item_max_price := 25
 
 
 func _enter_tree() -> void:
@@ -49,7 +51,7 @@ func handle_weapon_cooled() -> void:
 
 func handle_weapon_sold() -> void:
 	print("Weapon sold")
-	_balance += _current_item_price
+	_balance += randf_range(_current_item_min_price, _current_item_max_price)
 	SignalHub.emit_balance_updated(_balance)
 	set_current_stage(CraftingStage.ORE_ROCK)
 

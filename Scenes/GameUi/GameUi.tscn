@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://l3egkl0fu464"]
+[gd_scene load_steps=11 format=3 uid="uid://l3egkl0fu464"]
 
 [ext_resource type="Texture2D" uid="uid://bxttc8xs055h5" path="res://Assets/Sprites/4 Icons/Coin.png" id="1_anb74"]
 [ext_resource type="Script" uid="uid://btl7jhsbfgu4u" path="res://Scenes/GameUi/GameUi.gd" id="1_anolp"]
@@ -14,6 +14,15 @@ font = ExtResource("2_anolp")
 font_size = 200
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e55ej"]
+font = ExtResource("2_anolp")
+font_size = 112
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 17
+shadow_color = Color(0, 0, 0, 0.823529)
+shadow_offset = Vector2(6, 6)
 
 [node name="Game UI" type="Control"]
 process_mode = 3
@@ -46,54 +55,6 @@ text = "000000"
 label_settings = SubResource("LabelSettings_tt7lr")
 vertical_alignment = 1
 
-[node name="HintLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 171.0
-offset_top = 17.0
-offset_right = 1266.0
-offset_bottom = 192.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.123082, 0.123082)
-text = "How to craft:
-1. Hit Ore Pile to dig ore
-2. Heat it in the Furnace
-3. Make your weapon on the anvil
-4. Cool down the weapon in the water barrel
-5. Place it on the weapon rack to sell"
-label_settings = ExtResource("4_5hvfd")
-horizontal_alignment = 1
-
-[node name="HideHintButton" type="TextureButton" parent="."]
-layout_mode = 1
-offset_left = 241.0
-offset_top = 83.0
-offset_right = 301.0
-offset_bottom = 101.0
-texture_normal = ExtResource("5_cfi2h")
-texture_pressed = ExtResource("6_cfi2h")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="HideHintButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -5.0
-offset_right = 349.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.123, 0.123)
-text = "Hide hint"
-label_settings = ExtResource("7_e55ej")
-
 [node name="NextStepIcon" parent="." instance=ExtResource("7_ldyld")]
 layout_mode = 1
 offset_left = 181.0
@@ -101,4 +62,79 @@ offset_top = -149.0
 offset_right = 221.0
 offset_bottom = -109.0
 
-[connection signal="pressed" from="HideHintButton" to="." method="_on_texture_button_pressed"]
+[node name="HintBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0889156, 0.0954596, 0.921569)
+
+[node name="HintTitle" type="Label" parent="HintBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -86.0
+offset_right = 1484.0
+offset_bottom = 409.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.234334, 0.234334)
+text = "How to craft:"
+label_settings = SubResource("LabelSettings_e55ej")
+
+[node name="HintLabel" type="Label" parent="HintBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -47.0
+offset_right = 1485.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.155939, 0.155939)
+text = "1. Hit Ore Pile and catch the ore
+2. Heat it in the Furnace
+3. Make your weapon on the anvil
+4. Cool the weapon in the water barrel
+5. Place it on the weapon rack to sell"
+label_settings = ExtResource("4_5hvfd")
+
+[node name="HideHintButton" type="TextureButton" parent="HintBackground"]
+layout_mode = 1
+offset_left = 150.0
+offset_top = 190.0
+offset_right = 210.0
+offset_bottom = 208.0
+scale = Vector2(1.28116, 1.28116)
+texture_normal = ExtResource("5_cfi2h")
+texture_pressed = ExtResource("6_cfi2h")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="HintBackground/HideHintButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -5.0
+offset_right = 222.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.123, 0.123)
+text = "Got it!"
+label_settings = ExtResource("7_e55ej")
+
+[connection signal="pressed" from="HintBackground/HideHintButton" to="." method="_on_texture_button_pressed"]

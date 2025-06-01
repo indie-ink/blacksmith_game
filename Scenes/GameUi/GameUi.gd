@@ -1,8 +1,7 @@
 extends Control
 
-@onready var hint_label: Label = $HintLabel
-@onready var hide_hint_button: TextureButton = $HideHintButton
 @onready var score_label: Label = $ScoreLabel
+@onready var hint_background: ColorRect = $HintBackground
 
 
 func _ready() -> void:
@@ -15,5 +14,4 @@ func handle_balance_updated(new_balance: int) -> void:
 
 
 func _on_texture_button_pressed() -> void:
-	hint_label.hide()
-	hide_hint_button.hide()
+	hint_background.hide()

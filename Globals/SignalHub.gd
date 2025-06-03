@@ -3,9 +3,13 @@ extends Node
 #region Player signals
 signal player_action_requested(action_type: Player.ActionTypes)
 signal player_action_performed(action_type: Player.ActionTypes)
+signal player_disable_actions_requested
+signal player_enable_actions_requested
 
 func emit_player_action_requested(action_type: Player.ActionTypes) -> void: player_action_requested.emit(action_type)
 func emit_player_action_performed(action_type: Player.ActionTypes) -> void: player_action_performed.emit(action_type)
+func emit_player_disable_actions_requested() -> void: player_disable_actions_requested.emit()
+func emit_player_enable_actions_requested() -> void: player_enable_actions_requested.emit()
 #endregion
 
 #region stages passed signals

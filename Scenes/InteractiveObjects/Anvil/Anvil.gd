@@ -2,19 +2,22 @@ class_name Anvil
 
 extends InteractiveObject
 
+const GROUP_NAME := "anvil"
 const WAIT_AFTER_HIT_TIME := 0.7
 const PARTICLE_LIFETIME := 1
 
 @onready var pick_up_item: PickUpItem = $PickUpItem
 @onready var sparks_particles: CPUParticles2D = $SparksParticles
 
-@export var times_to_hit := 3
+@export var times_to_hit := 10
 
 var _total_hits := 0
 var _stage_entered := false
 
 
+
 func _enter_tree() -> void:
+	add_to_group(GROUP_NAME)
 	SignalHub.player_action_performed.connect(handle_player_action_performed)
 
 
@@ -24,6 +27,7 @@ func handle_interaction() -> void:
 		
 		_stage_entered = true
 		SignalHub.emit_anvil_stage_started()
+		SignalHub.emit_player_disable_actions_requested()
 
 
 func request_player_hammer_hit() -> void:
@@ -41,6 +45,7 @@ func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 		await get_tree().create_timer(WAIT_AFTER_HIT_TIME).timeout
 		
 		_total_hits = 0
+		_stage_entered = false
 		SignalHub.emit_anvil_passed()
 		pick_up_item.handle_picked_up()
 

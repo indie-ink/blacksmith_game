@@ -4,11 +4,17 @@ extends Area2D
 
 enum LetterVariants { W, A, S, D }
 
-const DEFAULT_FALLING_SPEED := 30.0
+const GROUP_NAME := "rythm_letter"
+const DEFAULT_FALLING_SPEED := 40.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var _speed := DEFAULT_FALLING_SPEED
+var _letter_variant: LetterVariants
+
+
+func _enter_tree() -> void:
+	add_to_group(GROUP_NAME)
 
 
 func _process(delta: float) -> void:
@@ -20,6 +26,7 @@ func setup(letter_variant: LetterVariants, speed = DEFAULT_FALLING_SPEED) -> voi
 		queue_free()
 
 	_speed = speed
+	_letter_variant = letter_variant
 
 	match letter_variant:
 		LetterVariants.W:
@@ -32,7 +39,5 @@ func setup(letter_variant: LetterVariants, speed = DEFAULT_FALLING_SPEED) -> voi
 			animated_sprite_2d.play("D")
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area is RythmBar: 
-		print("ENTERED")
-		queue_free()
+func get_variant() -> LetterVariants:
+	return _letter_variant

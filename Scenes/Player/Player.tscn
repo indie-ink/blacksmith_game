@@ -145,8 +145,8 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wape"]
-switch_mode = 2
 advance_mode = 2
+advance_expression = "!_is_hitting_with_hammer"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i5acl"]
 states/RESET/node = SubResource("AnimationNodeAnimation_jmcll")
@@ -189,7 +189,7 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.6, 1.6)
+zoom = Vector2(1.3, 1.3)
 limit_left = 2
 limit_top = 0
 limit_right = 478

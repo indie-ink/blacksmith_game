@@ -85,6 +85,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_bwj60")
 
 [node name="Thermometer" type="Sprite2D" parent="." index="6"]
+visible = false
 position = Vector2(-11.7273, -35.9091)
 scale = Vector2(0.681818, 0.681818)
 texture = ExtResource("7_su4gw")

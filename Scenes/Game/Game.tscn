@@ -156,7 +156,7 @@ position = Vector2(255, 277)
 position = Vector2(53, 277)
 
 [node name="Player" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(350, 264)
+position = Vector2(354, 264)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

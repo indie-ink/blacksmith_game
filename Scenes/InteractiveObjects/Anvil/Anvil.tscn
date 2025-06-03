@@ -13,7 +13,7 @@ size = Vector2(16, 13)
 
 [node name="Anvil" instance=ExtResource("1_h7ema")]
 script = ExtResource("2_3ir3a")
-times_to_hit = 3
+times_to_hit = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_fps4c")

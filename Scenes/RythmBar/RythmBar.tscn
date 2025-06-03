@@ -1,15 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfgtgmx02cwnk"]
+[gd_scene load_steps=10 format=3 uid="uid://bfgtgmx02cwnk"]
 
 [ext_resource type="Script" uid="uid://nia1uhl7o4e6" path="res://Scenes/RythmBar/RythmBar.gd" id="1_6brxb"]
+[ext_resource type="AudioStream" uid="uid://dsxjfi5bl8ydm" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="2_v2i34"]
+[ext_resource type="AudioStream" uid="uid://bjjj82dpavx0y" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-002.wav" id="3_46dwr"]
+[ext_resource type="AudioStream" uid="uid://cw8nknxjekjab" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-003.wav" id="4_e55ij"]
+[ext_resource type="AudioStream" uid="uid://tiqkar5ayw11" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-004.wav" id="5_ftg8d"]
+[ext_resource type="AudioStream" uid="uid://cv15k6agya332" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-005.wav" id="6_ljhkv"]
+[ext_resource type="AudioStream" uid="uid://cb3q7wg5j4vu7" path="res://Assets/SFX/AnvilHit/UIClick_INTERFACE-Metallic Click_HY_PC-006.wav" id="7_vcd5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jnxq"]
 size = Vector2(65, 2)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_we8m1"]
+streams_count = 6
+stream_0/stream = ExtResource("2_v2i34")
+stream_1/stream = ExtResource("3_46dwr")
+stream_2/stream = ExtResource("4_e55ij")
+stream_3/stream = ExtResource("5_ftg8d")
+stream_4/stream = ExtResource("6_ljhkv")
+stream_5/stream = ExtResource("7_vcd5u")
 
 [node name="RythmBar" type="Area2D"]
 script = ExtResource("1_6brxb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1jnxq")
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -17,4 +31,10 @@ shape = SubResource("RectangleShape2D_1jnxq")
 [node name="SpawnMarker" type="Marker2D" parent="."]
 position = Vector2(0, -93)
 
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_we8m1")
+volume_db = 5.368
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -7,9 +7,10 @@ enum ActionTypes { MINING, HIT_ANVIL }
 const GRAVITY := 600
 const RUN_SPEED := 80.0
 const HAMMER_HIT_TIME := 0.9
-const DEFAULT_ZOOM := Vector2(1.3, 1.3)
-const ANVIL_ZOOM := Vector2(2.2, 2.2)
+const DEFAULT_ZOOM := 1.3
+const ANVIL_ZOOM := 2.2
 const ANVIL_OFFSET_X = 5.0
+const ZOOM_SPEED = 3.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -18,7 +19,8 @@ const ANVIL_OFFSET_X = 5.0
 
 var _is_hitting_with_hammer := false
 var _are_actions_enabled := true
-
+var smooth_zoom = DEFAULT_ZOOM
+var target_zoom = DEFAULT_ZOOM
 
 func _enter_tree() -> void:
 	SignalHub.player_action_requested.connect(handle_player_action_requested)
@@ -30,10 +32,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	process_movement_input()
 
 
+func _process(delta: float) -> void:
+	process_camera_zoom(delta)
+
+
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	
 	move_and_slide()
+
+
+func process_camera_zoom(delta: float) -> void:
+	smooth_zoom = lerp(smooth_zoom, target_zoom, ZOOM_SPEED * delta)
+	if smooth_zoom != target_zoom:
+		camera_2d.zoom = (Vector2(smooth_zoom, smooth_zoom))
 
 
 func process_movement_input() -> void:
@@ -66,14 +78,14 @@ func play_anvil_hit_sound() -> void:
 
 func handle_anvil_stage_started() -> void:
 	_are_actions_enabled = false
-	camera_2d.zoom = ANVIL_ZOOM
+	target_zoom = 2.0
 	global_position.x = get_tree().get_first_node_in_group(Anvil.GROUP_NAME).global_position.x + ANVIL_OFFSET_X
 	sprite_2d.flip_h = true
 
 
 func handle_anvil_passed() -> void:
 	_are_actions_enabled = true
-	camera_2d.zoom = DEFAULT_ZOOM
+	target_zoom = DEFAULT_ZOOM
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

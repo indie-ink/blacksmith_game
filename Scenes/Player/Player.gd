@@ -32,20 +32,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	process_movement_input()
 
 
-func _process(delta: float) -> void:
-	process_camera_zoom(delta)
-
-
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	
+	process_camera_zoom(delta)
 	move_and_slide()
 
 
 func process_camera_zoom(delta: float) -> void:
+	if smooth_zoom == target_zoom: return
+	
 	smooth_zoom = lerp(smooth_zoom, target_zoom, ZOOM_SPEED * delta)
-	if smooth_zoom != target_zoom:
-		camera_2d.zoom = (Vector2(smooth_zoom, smooth_zoom))
+	camera_2d.zoom = Vector2(smooth_zoom, smooth_zoom)
 
 
 func process_movement_input() -> void:

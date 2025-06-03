@@ -41,3 +41,7 @@ func setup(letter_variant: LetterVariants, speed = DEFAULT_FALLING_SPEED) -> voi
 
 func get_variant() -> LetterVariants:
 	return _letter_variant
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	call_deferred("queue_free")

@@ -6,6 +6,12 @@ enum LetterVariants { W, A, S, D }
 
 const GROUP_NAME := "rythm_letter"
 const DEFAULT_FALLING_SPEED := 40.0
+const ANIMATION_BY_VARIANT: Dictionary[LetterVariants, String] = {
+	LetterVariants.W: "W",
+	LetterVariants.A: "A",
+	LetterVariants.S: "S",
+	LetterVariants.D: "D",
+}
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -27,16 +33,8 @@ func setup(letter_variant: LetterVariants, speed = DEFAULT_FALLING_SPEED) -> voi
 
 	_speed = speed
 	_letter_variant = letter_variant
-
-	match letter_variant:
-		LetterVariants.W:
-			animated_sprite_2d.play("W")
-		LetterVariants.A:
-			animated_sprite_2d.play("A")
-		LetterVariants.S:
-			animated_sprite_2d.play("S")
-		LetterVariants.D:
-			animated_sprite_2d.play("D")
+	
+	animated_sprite_2d.play(ANIMATION_BY_VARIANT[letter_variant])
 
 
 func get_variant() -> LetterVariants:

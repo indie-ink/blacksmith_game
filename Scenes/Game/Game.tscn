@@ -140,7 +140,6 @@ tile_set = SubResource("TileSet_3k6gv")
 [node name="OreRock" parent="InteractiveObjects" instance=ExtResource("10_edkrd")]
 z_index = 10
 position = Vector2(397, 266)
-ore_needed_amount = 1
 
 [node name="Furnace" parent="InteractiveObjects" instance=ExtResource("10_bsqcq")]
 position = Vector2(287, 240)
@@ -156,7 +155,7 @@ position = Vector2(255, 277)
 position = Vector2(53, 277)
 
 [node name="Player" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(354, 264)
+position = Vector2(100, 264)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

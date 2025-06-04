@@ -30,12 +30,18 @@ _data = {
 
 [node name="GameBackground" type="Node2D"]
 
-[node name="Bg1" type="Sprite2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.03, 1.03)
+
+[node name="Bg1" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(238, 164)
 scale = Vector2(1.57671, 1.57671)
 texture = ExtResource("1_ryw2k")
 
-[node name="Bg2" type="Sprite2D" parent="."]
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.01, 1.01)
+
+[node name="Bg2" type="Sprite2D" parent="Parallax2D2"]
 position = Vector2(237, 210)
 scale = Vector2(1.55618, 1.55618)
 texture = ExtResource("2_8ma3w")

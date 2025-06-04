@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 enum ActionTypes { MINING, HIT_ANVIL }
 
+const GROUP_NAME = "player"
+
 const GRAVITY := 600
 const RUN_SPEED := 80.0
 const HAMMER_HIT_TIME := 0.9
@@ -23,6 +25,7 @@ var smooth_zoom = DEFAULT_ZOOM
 var target_zoom = DEFAULT_ZOOM
 
 func _enter_tree() -> void:
+	add_to_group(GROUP_NAME)
 	SignalHub.player_action_requested.connect(handle_player_action_requested)
 	SignalHub.anvil_stage_started.connect(handle_anvil_stage_started)
 	SignalHub.anvil_passed.connect(handle_anvil_passed)

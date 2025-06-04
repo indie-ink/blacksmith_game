@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://uoxapmweoqce"]
+[gd_scene load_steps=8 format=3 uid="uid://uoxapmweoqce"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_g2egu"]
 [ext_resource type="Texture2D" uid="uid://cwdugkpwb5654" path="res://Assets/Sprites/2 Objects/Rack.png" id="2_eibmt"]
@@ -8,10 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://cg7gtgyo3mqao" path="res://Assets/SFX/DSGNTonl_USABLE-Magic Coin_HY_PC-003.wav" id="6_coaq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lu4g5"]
-size = Vector2(38, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_coaq8"]
-size = Vector2(50, 6)
 
 [node name="WeaponRack" instance=ExtResource("1_g2egu")]
 script = ExtResource("2_lu4g5")
@@ -21,7 +17,7 @@ position = Vector2(0, -0.5)
 texture = ExtResource("2_eibmt")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(9, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_lu4g5")
 
 [node name="PickUpItem" parent="." index="2" instance=ExtResource("4_lu4g5")]
@@ -32,13 +28,3 @@ pickup_sound = ExtResource("6_coaq8")
 
 [node name="WeaponLandingMarker" type="Marker2D" parent="." index="3"]
 position = Vector2(0, -7)
-
-[node name="WeaponLanding" type="Area2D" parent="." index="4"]
-collision_layer = 2
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponLanding" index="0"]
-position = Vector2(2, 7)
-shape = SubResource("RectangleShape2D_coaq8")
-
-[connection signal="body_entered" from="WeaponLanding" to="." method="_on_weapon_landing_body_entered"]

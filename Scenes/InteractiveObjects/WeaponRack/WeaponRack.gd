@@ -4,9 +4,13 @@ extends InteractiveObject
 
 const CREATED_WEAPON = preload("res://Scenes/InteractiveObjects/WeaponRack/CreatedWeapon/CreatedWeapon.tscn")
 const WAIT_FOR_THROW_TIME := 1.4
+const WAIT_BEFORE_SELL_TIME := 2.0
+const LAUNCH_IN_THE_AIR_FORCE := 400.0
 
 @onready var pick_up_item: PickUpItem = $PickUpItem
 @onready var weapon_landing_marker: Marker2D = $WeaponLandingMarker
+
+var _current_weapon: CreatedWeapon = null
 
 func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.WEAPON_RACK):
@@ -16,23 +20,26 @@ func handle_interaction() -> void:
 		
 		SignalHub.emit_weapon_sold()
 		pick_up_item.handle_picked_up()
+		await get_tree().create_timer(WAIT_BEFORE_SELL_TIME).timeout
+		_current_weapon.call_deferred("queue_free")
+		
 
 
 func spawn_weapon() -> void:
-	var weapon: CreatedWeapon = CREATED_WEAPON.instantiate()
+	_current_weapon = CREATED_WEAPON.instantiate()
 	
-	add_child(weapon)
+	add_child(_current_weapon)
 	
-	weapon.global_position = get_tree().get_first_node_in_group(Player.GROUP_NAME).global_position
+	_current_weapon.global_position = get_tree().get_first_node_in_group(Player.GROUP_NAME).global_position
 	
-	animation_created_weapon(weapon)
+	animation_created_weapon(_current_weapon)
 
 
 func animation_created_weapon(weapon: RigidBody2D) -> void:
-	weapon.add_constant_torque(30)
+	weapon.add_constant_torque(50)
 	var mid = weapon_landing_marker.global_position - weapon.global_position
 	
-	mid.y -= 400
+	mid.y -= LAUNCH_IN_THE_AIR_FORCE
 	
 	weapon.apply_central_force(mid / 2)
 

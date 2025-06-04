@@ -21,7 +21,7 @@ func _enter_tree() -> void:
 func initial_setup() -> void:
 	_balance = 0
 	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.WEAPON_RACK)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 func handle_ore_stage_passed() -> void:

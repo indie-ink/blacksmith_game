@@ -158,11 +158,15 @@ times_to_hit = 6
 [node name="WaterBarrel" parent="InteractiveObjects" instance=ExtResource("10_fg52j")]
 position = Vector2(255, 277)
 
-[node name="WeaponRack" parent="InteractiveObjects" instance=ExtResource("10_6581v")]
+[node name="WeaponRack" parent="InteractiveObjects" node_paths=PackedStringArray("sell_weapon_point") instance=ExtResource("10_6581v")]
 position = Vector2(53, 277)
+sell_weapon_point = NodePath("SellWeaponMarker")
+
+[node name="SellWeaponMarker" type="Marker2D" parent="InteractiveObjects/WeaponRack"]
+position = Vector2(50, -79)
 
 [node name="Player" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(353, 264)
+position = Vector2(161, 264)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -2,14 +2,14 @@ class_name RythmLetter
 
 extends Area2D
 
-enum LetterVariants { W, A, S, D }
+enum LetterVariants { UP, LEFT, DOWN, RIGHT }
 
 const GROUP_NAME := "rythm_letter"
 const ANIMATION_BY_VARIANT: Dictionary[LetterVariants, String] = {
-	LetterVariants.W: "W",
-	LetterVariants.A: "A",
-	LetterVariants.S: "S",
-	LetterVariants.D: "D",
+	LetterVariants.UP: "up",
+	LetterVariants.LEFT: "left",
+	LetterVariants.DOWN: "dpwn",
+	LetterVariants.RIGHT: "right",
 }
 
 @export var falling_speed := 80.0

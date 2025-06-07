@@ -18,9 +18,7 @@ func handle_interaction() -> void:
 		if _current_weapon: return
 
 		spawn_weapon()
-
 		await get_tree().create_timer(WAIT_FOR_THROW_TIME).timeout
-
 		SignalHub.emit_weapon_sold()
 		pick_up_item.handle_picked_up()
 		await get_tree().create_timer(WAIT_BEFORE_SELL_TIME).timeout
@@ -29,11 +27,8 @@ func handle_interaction() -> void:
 
 func spawn_weapon() -> void:
 	_current_weapon = CREATED_WEAPON.instantiate()
-
 	add_child(_current_weapon)
-
 	_current_weapon.global_position = get_tree().get_first_node_in_group(Player.GROUP_NAME).global_position
-
 	animation_created_weapon(_current_weapon)
 
 
@@ -42,7 +37,6 @@ func animation_created_weapon(weapon: RigidBody2D) -> void:
 	var middle: Vector2 = weapon_landing_marker.global_position - weapon.global_position
 
 	middle.y -= LAUNCH_IN_THE_AIR_FORCE
-
 	weapon.apply_central_force(middle / 2)
 	throw_sound.play()
 

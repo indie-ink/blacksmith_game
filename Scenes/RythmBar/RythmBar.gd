@@ -4,10 +4,10 @@ extends Area2D
 
 const RYTHM_LETTER = preload("res://Scenes/RythmBar/RythmLetter/RythmLetter.tscn")
 const ACTION_BY_LETTER: Dictionary[RythmLetter.LetterVariants, String] = {
-	RythmLetter.LetterVariants.W: "up",
-	RythmLetter.LetterVariants.A: "left",
-	RythmLetter.LetterVariants.S: "down",
-	RythmLetter.LetterVariants.D: "right",
+	RythmLetter.LetterVariants.UP: "up",
+	RythmLetter.LetterVariants.LEFT: "left",
+	RythmLetter.LetterVariants.DOWN: "down",
+	RythmLetter.LetterVariants.RIGHT: "right",
 }
 
 @onready var spawn_timer: Timer = $SpawnTimer

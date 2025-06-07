@@ -63,6 +63,7 @@ offset_right = 221.0
 offset_bottom = -109.0
 
 [node name="HintBackground" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

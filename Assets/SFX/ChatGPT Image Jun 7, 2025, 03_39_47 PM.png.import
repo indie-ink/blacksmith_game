@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c10orgog4shap"
-path="res://.godot/imported/WASD_keys.png-70db5bcc60452bc72991388012a2c779.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://bhgfprdevy5jn"
+valid=false
 
 [deps]
 
-source_file="res://Assets/Sprites/4 Icons/WASD_keys.png"
-dest_files=["res://.godot/imported/WASD_keys.png-70db5bcc60452bc72991388012a2c779.ctex"]
+source_file="res://Assets/SFX/ChatGPT Image Jun 7, 2025, 03_39_47 PM.png"
 
 [params]
 

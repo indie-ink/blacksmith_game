@@ -37,14 +37,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
-	
+
 	process_camera_zoom(delta)
 	move_and_slide()
 
 
 func process_camera_zoom(delta: float) -> void:
 	if smooth_zoom == target_zoom: return
-	
+
 	smooth_zoom = lerp(smooth_zoom, target_zoom, ZOOM_SPEED * delta)
 	camera_2d.zoom = Vector2(smooth_zoom, smooth_zoom)
 
@@ -53,9 +53,9 @@ func process_movement_input() -> void:
 	if !_are_actions_enabled:
 		velocity.x = 0
 		return
-	
+
 	velocity.x = RUN_SPEED * Input.get_axis("left", "right")
-	
+
 	if not is_equal_approx(velocity.x, 0.0):
 		sprite_2d.flip_h = velocity.x < 0
 
@@ -63,13 +63,13 @@ func process_movement_input() -> void:
 func handle_player_action_requested(action_type: ActionTypes) -> void:
 	if action_type == ActionTypes.MINING and !_is_hitting_with_hammer:
 		_is_hitting_with_hammer = true
-		
+
 		await get_tree().create_timer(HAMMER_HIT_TIME).timeout
-		
+
 		SignalHub.emit_player_action_performed(ActionTypes.MINING)
 	elif action_type == ActionTypes.HIT_ANVIL:
 		_is_hitting_with_hammer = true
-		
+
 		SignalHub.emit_player_action_performed(ActionTypes.HIT_ANVIL)
 
 

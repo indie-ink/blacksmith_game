@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://gu333okcnpc3"]
+[gd_scene load_steps=10 format=3 uid="uid://gu333okcnpc3"]
 
 [ext_resource type="Script" uid="uid://crnrvwfdgv0pq" path="res://Scenes/RythmBar/RythmLetter/RythmLetter.gd" id="1_aweet"]
 [ext_resource type="Texture2D" uid="uid://yl0cuqkyqh14" path="res://Assets/Sprites/4 Icons/WASD_keys_2.png" id="2_aweet"]
+[ext_resource type="AudioStream" uid="uid://bq3bie0a17hqk" path="res://Assets/SFX/DSGNTonl_SKILL IMPACT-Coin Laser_HY_PC-005.wav" id="3_soqum"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_soqum"]
 atlas = ExtResource("2_aweet")
@@ -58,6 +59,7 @@ animations = [{
 size = Vector2(12, 9)
 
 [node name="RythmLetter" type="Area2D"]
+self_modulate = Color(1, 1, 1, 0.972549)
 script = ExtResource("1_aweet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -70,5 +72,8 @@ position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_1krsh")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_soqum")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

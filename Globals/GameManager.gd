@@ -21,7 +21,7 @@ func _enter_tree() -> void:
 func initial_setup() -> void:
 	_balance = 0
 	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.ORE_ROCK)
+	set_current_stage(CraftingStage.ANVIL)
 
 
 func handle_ore_stage_passed() -> void:
@@ -62,7 +62,7 @@ func get_current_stage() -> CraftingStage:
 
 func set_current_stage(new_stage: CraftingStage) -> void:
 	if !CraftingStage.values().has(new_stage): return
-	
+
 	_current_stage = new_stage
 	SignalHub.emit_stage_updated(new_stage)
 

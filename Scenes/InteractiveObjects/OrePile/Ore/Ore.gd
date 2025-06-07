@@ -26,7 +26,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		hide()
 		sound.play()
 		SignalHub.emit_ore_taken()
-		
+
 
 
 func _on_sound_finished() -> void:

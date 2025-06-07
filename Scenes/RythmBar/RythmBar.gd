@@ -18,9 +18,9 @@ var _eneterd_letter: Area2D
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !_eneterd_letter: return
-	
+
 	var variant: RythmLetter.LetterVariants = _eneterd_letter.get_variant()
-	
+
 	if Input.is_action_just_pressed(ACTION_BY_LETTER[variant]):
 		_eneterd_letter.queue_free()
 		hit_sound.play()
@@ -45,7 +45,7 @@ func handle_anvil_passed() -> void:
 
 func spawn_letter() -> void:
 	var letter = RYTHM_LETTER.instantiate()
-	
+
 	spawn_marker.add_child(letter)
 	letter.setup(RythmLetter.LetterVariants.values().pick_random())
 
@@ -61,3 +61,8 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_area_exited(area: Area2D) -> void:
 	if area is RythmLetter:
 		_eneterd_letter = null
+
+
+func _on_miss_bar_area_entered(area: Area2D) -> void:
+	if area is RythmLetter:
+		area.play_failed_animation()

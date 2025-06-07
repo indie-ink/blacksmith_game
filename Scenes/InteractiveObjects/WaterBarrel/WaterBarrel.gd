@@ -13,17 +13,17 @@ var _is_used := false
 func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.WATER_BARREL):
 		if _is_used: return
-		
+
 		_is_used = true
-		
+
 		steam_animated_sprite_2d.show()
 		sound.play()
-		
+
 		await get_tree().create_timer(SHOW_STEAM_TIME).timeout
-		
+
 		steam_animated_sprite_2d.hide()
-		
+
 		SignalHub.emit_weapon_cooled()
 		pick_up_item.handle_picked_up()
-		
+
 		_is_used = false

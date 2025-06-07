@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 func handle_interaction() -> void:
 	if GameManager.is_stage_allowed(GameManager.CraftingStage.ANVIL):
 		if _stage_entered: return
-		
+
 		_stage_entered = true
 		SignalHub.emit_anvil_stage_started()
 		SignalHub.emit_player_disable_actions_requested()
@@ -36,14 +36,14 @@ func request_player_hammer_hit() -> void:
 
 func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 	if action_type != Player.ActionTypes.HIT_ANVIL: return
-	
+
 	spawn_hit_effect()
 
 	_total_hits += 1
-	
+
 	if _total_hits == times_to_hit:
 		await get_tree().create_timer(WAIT_AFTER_HIT_TIME).timeout
-		
+
 		_total_hits = 0
 		_stage_entered = false
 		SignalHub.emit_anvil_passed()
@@ -54,10 +54,10 @@ func spawn_hit_effect() -> void:
 	var new_particle: CPUParticles2D = sparks_particles.duplicate()
 
 	add_child(new_particle)
-	
+
 	new_particle.position = Vector2(0, -6)
 	new_particle.one_shot = true
 	new_particle.emitting = true
-	
+
 	await get_tree().create_timer(PARTICLE_LIFETIME).timeout
 	new_particle.call_deferred("queue_free")

@@ -68,7 +68,7 @@ cooling_distance_to_pass = 10000
 
 [node name="SwordSprite" type="Sprite2D" parent="." index="0"]
 visible = false
-position = Vector2(0, -10)
+position = Vector2(0, -8)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("3_w678d")
 offset = Vector2(0, -10.45)

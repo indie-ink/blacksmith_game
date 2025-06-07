@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://benjyghsyi5wn"]
+
+[ext_resource type="FontFile" uid="uid://ry05acjk8rq2" path="res://Assets/Font/Pixellari.ttf" id="1_wp2la"]
+
+[resource]
+font = ExtResource("1_wp2la")
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(6, 6)

@@ -16,7 +16,7 @@ var _current_ore_amount := 0
 
 func _enter_tree() -> void:
 	SignalHub.player_action_performed.connect(handle_player_action_performed)
-	SignalHub.ore_taken.connect(handle_ore_taken)
+	SignalHub.ore_collected.connect(handle_ore_collected)
 
 
 func handle_interaction() -> void:
@@ -34,9 +34,9 @@ func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 	generate_stone_particles()
 	spawn_ore()
 
-func handle_ore_taken() -> void:
+func handle_ore_collected() -> void:
 	_current_ore_amount += 1
-	
+
 	if _current_ore_amount >= ore_needed_amount:
 		_current_ore_amount = 0
 		SignalHub.emit_ore_stage_passed()
@@ -61,6 +61,6 @@ func setup_particle(particle: CPUParticles2D) -> void:
 	add_child(new_particle)
 	new_particle.one_shot = true
 	new_particle.emitting = true
-	
+
 	await get_tree().create_timer(PARTICLE_LIFETIME).timeout
 	new_particle.call_deferred("queue_free")

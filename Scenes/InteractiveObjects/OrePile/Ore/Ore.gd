@@ -25,7 +25,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		_is_collected = true
 		hide()
 		sound.play()
-		SignalHub.emit_ore_taken()
+		SignalHub.emit_ore_collected()
 
 
 

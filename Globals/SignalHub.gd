@@ -13,7 +13,7 @@ func emit_player_enable_actions_requested() -> void: player_enable_actions_reque
 #endregion
 
 #region stages passed signals
-signal ore_taken
+signal ore_collected
 signal ore_stage_passed
 
 signal furnace_stage_passed
@@ -30,7 +30,7 @@ signal weapon_sold
 
 signal stage_updated(stage: GameManager.CraftingStage)
 
-func emit_ore_taken() -> void: ore_taken.emit()
+func emit_ore_collected() -> void: ore_collected.emit()
 func emit_ore_stage_passed() -> void: ore_stage_passed.emit()
 func emit_furnace_stage_passed() -> void: furnace_stage_passed.emit()
 func emit_furnace_stage_failed() -> void: furnace_stage_failed.emit()
@@ -43,6 +43,25 @@ func emit_weapon_sold() -> void: weapon_sold.emit()
 func emit_stage_updated(stage: GameManager.CraftingStage) -> void: stage_updated.emit(stage)
 #endregion
 
+
+#region game state signals
+
+signal ore_stage_state_updated(current_ore: int, required_ore: int)
+signal furnace_stage_state_updated(current_heat_time: float, current_overheat_time: float)
+signal anvil_stage_state_updated(hits_reached: int, hits_missed: int)
+
+func emit_ore_stage_state_updated(current_ore: int, required_ore: int) -> void:
+	ore_stage_state_updated.emit(current_ore, required_ore)
+
+
+func emit_furnace_stage_state_updated(current_heat_time: float, current_overheat_time: float) -> void:
+	furnace_stage_state_updated.emit(current_heat_time, current_overheat_time)
+
+
+func emit_anvil_stage_state_updated(hits_reached: int, hits_missed: int) -> void:
+	anvil_stage_state_updated.emit(hits_reached, hits_missed)
+
+#endregion
 
 signal balance_updated(new_balance: int)
 

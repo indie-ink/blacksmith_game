@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://l3egkl0fu464"]
+[gd_scene load_steps=12 format=3 uid="uid://l3egkl0fu464"]
 
 [ext_resource type="Texture2D" uid="uid://bxttc8xs055h5" path="res://Assets/Sprites/4 Icons/Coin.png" id="1_anb74"]
 [ext_resource type="Script" uid="uid://btl7jhsbfgu4u" path="res://Scenes/GameUi/GameUi.gd" id="1_anolp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bf4g8dwfymau1" path="res://Assets/Sprites/6 UI/Sprites/UI_Flat_Bar01a.png" id="6_cfi2h"]
 [ext_resource type="LabelSettings" uid="uid://dlo0lpsc0nd5g" path="res://Resources/ButtonTextWhiteMd.tres" id="7_e55ej"]
 [ext_resource type="PackedScene" uid="uid://e7430yu1ixgq" path="res://Scenes/NextStepIcon/NextStepIcon.tscn" id="7_ldyld"]
+[ext_resource type="PackedScene" uid="uid://dgeiv4csbnoy8" path="res://Scenes/GameUi/CraftingState/CraftingState.tscn" id="9_fbpwl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
 font = ExtResource("2_anolp")
@@ -137,5 +138,17 @@ grow_vertical = 2
 scale = Vector2(0.123, 0.123)
 text = "Got it!"
 label_settings = ExtResource("7_e55ej")
+
+[node name="CraftingState" parent="." instance=ExtResource("9_fbpwl")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = -89.0
+offset_right = 139.0
+offset_bottom = -89.0
 
 [connection signal="pressed" from="HintBackground/HideHintButton" to="." method="_on_texture_button_pressed"]

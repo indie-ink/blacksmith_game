@@ -56,6 +56,8 @@ func send_weapon_to_marker() -> void:
 		tween.parallel().tween_property(_current_weapon, "rotation_degrees", 1080, SEND_TO_SELL_POINT_TIME)
 		tween.parallel().tween_property(_current_weapon, "scale", Vector2(0, 0), SEND_TO_SELL_POINT_TIME)
 
+		tween.tween_callback(_current_weapon.queue_free)
+
 
 func _on_weapon_landing_body_entered(body: Node2D) -> void:
 	if body is CreatedWeapon:

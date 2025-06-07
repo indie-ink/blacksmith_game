@@ -10,7 +10,8 @@ const LOUD_VOLUME = -12.0
 
 func _enter_tree() -> void:
 	SignalHub.anvil_stage_started.connect(handle_anvil_stage_started)
-	SignalHub.anvil_passed.connect(handle_anvil_passed)
+	SignalHub.anvil_stage_passed.connect(handle_anvil_stage_passed)
+	SignalHub.anvil_stage_failed.connect(handle_anvil_stage_passed)
 
 func _ready() -> void:
 	play_main_theme_music()
@@ -20,7 +21,7 @@ func handle_anvil_stage_started() -> void:
 	play_smithing_theme_music()
 
 
-func handle_anvil_passed() -> void:
+func handle_anvil_stage_passed() -> void:
 	play_main_theme_music()
 
 

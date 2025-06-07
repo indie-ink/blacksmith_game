@@ -8,7 +8,7 @@ const GROUP_NAME := "rythm_letter"
 const ANIMATION_BY_VARIANT: Dictionary[LetterVariants, String] = {
 	LetterVariants.UP: "up",
 	LetterVariants.LEFT: "left",
-	LetterVariants.DOWN: "dpwn",
+	LetterVariants.DOWN: "down",
 	LetterVariants.RIGHT: "right",
 }
 

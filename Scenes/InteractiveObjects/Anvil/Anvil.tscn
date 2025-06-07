@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct75fsh8ykn2q"]
+[gd_scene load_steps=10 format=3 uid="uid://ct75fsh8ykn2q"]
 
 [ext_resource type="PackedScene" uid="uid://iae3f566tulg" path="res://Scenes/InteractiveObjects/InteractiveObject.tscn" id="1_h7ema"]
 [ext_resource type="Script" uid="uid://o8vw5yuadbii" path="res://Scenes/InteractiveObjects/Anvil/Anvil.gd" id="2_3ir3a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3gabev15du63" path="res://Assets/Sprites/4 Icons/Sword_2.png" id="5_gsvfe"]
 [ext_resource type="Texture2D" uid="uid://c883y4s35ae1f" path="res://Assets/Sprites/2 Objects/spark_2.png" id="6_gsvfe"]
 [ext_resource type="PackedScene" uid="uid://bfgtgmx02cwnk" path="res://Scenes/RythmBar/RythmBar.tscn" id="7_at7w3"]
+[ext_resource type="AudioStream" uid="uid://bq3bie0a17hqk" path="res://Assets/SFX/DSGNTonl_SKILL IMPACT-Coin Laser_HY_PC-005.wav" id="8_5q2ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fps4c"]
 size = Vector2(16, 13)
@@ -14,6 +15,7 @@ size = Vector2(16, 13)
 [node name="Anvil" instance=ExtResource("1_h7ema")]
 script = ExtResource("2_3ir3a")
 times_to_hit = 10
+times_to_fail = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_fps4c")
@@ -54,3 +56,6 @@ hue_variation_max = 0.36
 
 [node name="RythmBar" parent="." index="4" instance=ExtResource("7_at7w3")]
 position = Vector2(0, -5.5)
+
+[node name="FailSound" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("8_5q2ps")

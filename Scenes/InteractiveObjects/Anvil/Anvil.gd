@@ -8,17 +8,20 @@ const PARTICLE_LIFETIME := 1
 
 @onready var pick_up_item: PickUpItem = $PickUpItem
 @onready var sparks_particles: CPUParticles2D = $SparksParticles
+@onready var fail_sound: AudioStreamPlayer2D = $FailSound
 
 @export var times_to_hit := 10
+@export var times_to_fail := 10
 
-var _total_hits := 0
+var _total_reached_hits := 0
+var _total_missed_hits := 0
 var _stage_entered := false
-
 
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
 	SignalHub.player_action_performed.connect(handle_player_action_performed)
+	SignalHub.anvil_hit_missed.connect(handle_anvil_hit_missed)
 
 
 func handle_interaction() -> void:
@@ -38,16 +41,23 @@ func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 	if action_type != Player.ActionTypes.HIT_ANVIL: return
 
 	spawn_hit_effect()
+	_total_reached_hits += 1
 
-	_total_hits += 1
-
-	if _total_hits == times_to_hit:
+	if _total_reached_hits == times_to_hit:
 		await get_tree().create_timer(WAIT_AFTER_HIT_TIME).timeout
 
-		_total_hits = 0
-		_stage_entered = false
-		SignalHub.emit_anvil_passed()
+		reset_stage()
+		SignalHub.emit_anvil_stage_passed()
 		pick_up_item.handle_picked_up()
+
+
+func handle_anvil_hit_missed() -> void:
+	_total_missed_hits += 1
+
+	if _total_missed_hits >= times_to_fail:
+		fail_sound.play()
+		reset_stage()
+		SignalHub.emit_anvil_stage_failed()
 
 
 func spawn_hit_effect() -> void:
@@ -61,3 +71,9 @@ func spawn_hit_effect() -> void:
 
 	await get_tree().create_timer(PARTICLE_LIFETIME).timeout
 	new_particle.call_deferred("queue_free")
+
+
+func reset_stage() -> void:
+	_total_reached_hits = 0
+	_total_missed_hits = 0
+	_stage_entered = false

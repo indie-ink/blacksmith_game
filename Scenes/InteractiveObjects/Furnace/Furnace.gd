@@ -46,9 +46,9 @@ func init_stage() -> void:
 
 func heat_furnace() -> void:
 	if !_can_heat: return
-	
+
 	_can_heat = false
-	
+
 	increase_heat()
 	manage_success_timer()
 	handle_overheat()
@@ -110,13 +110,13 @@ func stop_heat_decrease_timer() -> void:
 func on_ore_process_success() -> void:
 	stop_stage()
 	pick_up_item.handle_picked_up()
-	SignalHub.emit_ore_heat_passed()
+	SignalHub.emit_furnace_stage_passed()
 
 
 func on_ore_process_fail() -> void:
 	fail_sound.play()
 	stop_stage()
-	SignalHub.emit_ore_heat_failed()
+	SignalHub.emit_furnace_stage_failed()
 
 
 func stop_stage() -> void:
@@ -133,13 +133,13 @@ func _on_heat_timeout_timer_timeout() -> void:
 
 func _on_heat_decrease_timer_timeout() -> void:
 	thermometer_progress.value -= heat_decrease_power
-	
+
 	if thermometer_progress.value <= max_heat:
 		pause_overheat_timer()
-	
+
 	if thermometer_progress.value <= min_heat:
 		stop_success_timer()
-	
+
 	if thermometer_progress.value < min_heat:
 		hide_fire_in_forge()
 		stop_overheat_timer()

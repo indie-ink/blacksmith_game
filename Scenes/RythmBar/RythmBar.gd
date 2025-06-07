@@ -29,7 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _enter_tree() -> void:
 	SignalHub.anvil_stage_started.connect(handle_anvil_stage_started)
-	SignalHub.anvil_passed.connect(handle_anvil_passed)
+	SignalHub.anvil_stage_passed.connect(handle_anvil_stage_passed)
+	SignalHub.anvil_stage_failed.connect(handle_anvil_stage_passed)
 
 
 func handle_anvil_stage_started() -> void:
@@ -37,7 +38,7 @@ func handle_anvil_stage_started() -> void:
 	spawn_timer.start()
 
 
-func handle_anvil_passed() -> void:
+func handle_anvil_stage_passed() -> void:
 	spawn_timer.stop()
 	for letter in get_tree().get_nodes_in_group(RythmLetter.GROUP_NAME):
 		letter.call_deferred("queue_free")
@@ -66,3 +67,4 @@ func _on_area_exited(area: Area2D) -> void:
 func _on_miss_bar_area_entered(area: Area2D) -> void:
 	if area is RythmLetter:
 		area.play_failed_animation()
+		SignalHub.emit_anvil_hit_missed()

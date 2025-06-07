@@ -28,7 +28,8 @@ func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
 	SignalHub.player_action_requested.connect(handle_player_action_requested)
 	SignalHub.anvil_stage_started.connect(handle_anvil_stage_started)
-	SignalHub.anvil_passed.connect(handle_anvil_passed)
+	SignalHub.anvil_stage_passed.connect(handle_anvil_stage_passed)
+	SignalHub.anvil_stage_failed.connect(handle_anvil_stage_passed)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -84,7 +85,7 @@ func handle_anvil_stage_started() -> void:
 	sprite_2d.flip_h = true
 
 
-func handle_anvil_passed() -> void:
+func handle_anvil_stage_passed() -> void:
 	_are_actions_enabled = true
 	target_zoom = DEFAULT_ZOOM
 

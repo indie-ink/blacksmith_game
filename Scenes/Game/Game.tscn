@@ -156,6 +156,7 @@ position = Vector2(204, 281)
 
 [node name="WaterBarrel" parent="InteractiveObjects" instance=ExtResource("10_fg52j")]
 position = Vector2(255, 277)
+cooling_distance_to_pass = 10000
 
 [node name="WeaponRack" parent="InteractiveObjects" node_paths=PackedStringArray("sell_weapon_point") instance=ExtResource("10_6581v")]
 position = Vector2(53, 277)

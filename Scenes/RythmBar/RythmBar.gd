@@ -14,7 +14,7 @@ const ACTION_BY_LETTER: Dictionary[RythmLetter.LetterVariants, String] = {
 @onready var spawn_marker: Marker2D = $SpawnMarker
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 
-var _eneterd_letter: Area2D
+var _eneterd_letter: RythmLetter
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !_eneterd_letter: return

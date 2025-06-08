@@ -23,7 +23,6 @@ var _letter_variant: LetterVariants
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
-	SignalHub.reset_stages_states.connect(handle_reset_stages_states)
 
 
 func _process(delta: float) -> void:
@@ -57,9 +56,6 @@ func play_failed_animation() -> void:
 	tween.tween_property(self, "modulate", Color(1, 0, 0, 0.01), 0.3)
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.3)
 
-
-func handle_reset_stages_states() -> void:
-	call_deferred("queue_free")
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	call_deferred("queue_free")

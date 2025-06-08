@@ -150,7 +150,6 @@ ore_needed_amount = 1
 
 [node name="Furnace" parent="InteractiveObjects" instance=ExtResource("10_bsqcq")]
 position = Vector2(287, 240)
-heat_decrease_power = 1.0
 
 [node name="Anvil" parent="InteractiveObjects" instance=ExtResource("10_jf0ra")]
 z_index = 10

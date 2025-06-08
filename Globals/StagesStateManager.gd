@@ -114,6 +114,5 @@ func emit_anvil_stage_update() -> void:
 		_anvil_stage_state["hits_required"],
 		_anvil_stage_state["max_hits_missed"]
 	)
-	pass
 
 #endregion

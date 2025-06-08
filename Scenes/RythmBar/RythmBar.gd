@@ -16,7 +16,7 @@ const ACTION_BY_LETTER: Dictionary[RythmLetter.LetterVariants, String] = {
 
 var _eneterd_letter: RythmLetter
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if !_eneterd_letter: return
 
 	var variant: RythmLetter.LetterVariants = _eneterd_letter.get_variant()
@@ -49,6 +49,7 @@ func spawn_letter() -> void:
 
 	spawn_marker.add_child(letter)
 	letter.setup(RythmLetter.LetterVariants.values().pick_random())
+
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_letter()

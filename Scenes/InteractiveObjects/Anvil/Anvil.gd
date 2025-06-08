@@ -64,7 +64,7 @@ func check_fail_condition() -> void:
 	if _total_missed_hits >= _times_to_fail:
 		fail_sound.play()
 		reset_stage()
-		SignalHub.emit_reset_stages_states()
+		SignalHub.call_deferred("emit_reset_stages_states")
 		SignalHub.emit_anvil_stage_failed()
 
 

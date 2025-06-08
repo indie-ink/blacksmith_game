@@ -54,7 +54,7 @@ size = Vector2(17, 22)
 script = ExtResource("2_t38jh")
 initial_heat = 40.0
 heat_power = 16.0
-heat_decrease_power = 3.0
+heat_decrease_power = 1.0
 min_heat = 59.0
 max_heat = 79.0
 time_to_overheat = 2.0
@@ -120,9 +120,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="HeatDecreaseTimer" type="Timer" parent="." index="8"]
-wait_time = 0.2
+wait_time = 0.05
 
 [node name="OverheatTimer" type="Timer" parent="." index="9"]
+wait_time = 2.0
 
 [node name="SuccessTimer" type="Timer" parent="." index="10"]
 wait_time = 4.0

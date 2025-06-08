@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgeiv4csbnoy8"]
+[gd_scene load_steps=3 format=3 uid="uid://dgeiv4csbnoy8"]
 
 [ext_resource type="Script" uid="uid://c5xcejdtv6g76" path="res://Scenes/GameUi/CraftingState/CraftingState.gd" id="1_u0m3u"]
-[ext_resource type="Texture2D" uid="uid://cpll88gwvxg60" path="res://Assets/Sprites/2 Objects/stone_1.png" id="2_adelb"]
 [ext_resource type="LabelSettings" uid="uid://benjyghsyi5wn" path="res://Resources/TextWhiteSm.tres" id="3_mmnnj"]
-[ext_resource type="Texture2D" uid="uid://ba5kbe38afhrv" path="res://Assets/Sprites/2 Objects/Thermometer.png" id="4_vwyj6"]
 
 [node name="CraftingState" type="Control"]
 layout_mode = 3
@@ -28,14 +26,6 @@ size_flags_horizontal = 4
 text = "Ore: 0 / 3"
 label_settings = ExtResource("3_mmnnj")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/OreHB"]
-modulate = Color(0.560784, 0.768627, 0.92549, 1)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_adelb")
-stretch_mode = 2
-
 [node name="FurnaceHeatHB" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -43,12 +33,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Heat: 4s"
 label_settings = ExtResource("3_mmnnj")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/FurnaceHeatHB"]
-layout_mode = 2
-texture = ExtResource("4_vwyj6")
-expand_mode = 3
-stretch_mode = 4
 
 [node name="FurnaceOverheatHB" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

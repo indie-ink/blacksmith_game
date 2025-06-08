@@ -6,6 +6,7 @@ extends Control
 
 func _ready() -> void:
 	GameManager.initial_setup()
+	StagesStateManager.initial_setup()
 	SignalHub.balance_updated.connect(handle_balance_updated)
 
 

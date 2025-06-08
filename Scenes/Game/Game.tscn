@@ -146,9 +146,11 @@ tile_set = SubResource("TileSet_3k6gv")
 [node name="OreRock" parent="InteractiveObjects" instance=ExtResource("10_edkrd")]
 z_index = 10
 position = Vector2(397, 266)
+ore_needed_amount = 1
 
 [node name="Furnace" parent="InteractiveObjects" instance=ExtResource("10_bsqcq")]
 position = Vector2(287, 240)
+heat_decrease_power = 1.0
 
 [node name="Anvil" parent="InteractiveObjects" instance=ExtResource("10_jf0ra")]
 z_index = 10

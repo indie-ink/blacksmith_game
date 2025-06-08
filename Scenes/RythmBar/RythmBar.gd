@@ -30,7 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _enter_tree() -> void:
 	SignalHub.anvil_stage_started.connect(handle_anvil_stage_started)
 	SignalHub.anvil_stage_passed.connect(handle_anvil_stage_passed)
-	SignalHub.anvil_stage_failed.connect(handle_anvil_stage_passed)
+	SignalHub.reset_stages_states.connect(handle_anvil_stage_passed)
 
 
 func handle_anvil_stage_started() -> void:

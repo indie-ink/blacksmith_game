@@ -21,13 +21,14 @@ signal furnace_heat_updated(heat_time: float, overheat_time: float)
 signal furnace_stage_failed
 
 signal anvil_stage_started
+signal anvil_hit_reached
 signal anvil_hit_missed
 signal anvil_stage_failed
 signal anvil_stage_passed
 
 signal weapon_cooled
 
-signal weapon_sold
+signal weapon_rack_stage_passed
 
 signal stage_updated(stage: GameManager.CraftingStage)
 
@@ -38,11 +39,12 @@ func emit_furnace_heat_updated(heat_time: float, overheat_time: float) -> void:
 	furnace_heat_updated.emit(heat_time, overheat_time)
 func emit_furnace_stage_failed() -> void: furnace_stage_failed.emit()
 func emit_anvil_stage_started() -> void: anvil_stage_started.emit()
+func emit_anvil_hit_reached() -> void: anvil_hit_reached.emit()
 func emit_anvil_hit_missed() -> void: anvil_hit_missed.emit()
 func emit_anvil_stage_failed() -> void: anvil_stage_failed.emit()
 func emit_anvil_stage_passed() -> void: anvil_stage_passed.emit()
 func emit_weapon_cooled() -> void: weapon_cooled.emit()
-func emit_weapon_sold() -> void: weapon_sold.emit()
+func emit_weapon_rack_stage_passed() -> void: weapon_rack_stage_passed.emit()
 func emit_stage_updated(stage: GameManager.CraftingStage) -> void: stage_updated.emit(stage)
 #endregion
 
@@ -56,7 +58,14 @@ signal furnace_stage_state_updated(
 	heat_time_required: float,
 	max_overheat_time: float
 )
-signal anvil_stage_state_updated(hits_reached: int, hits_missed: int)
+signal anvil_stage_state_updated(
+	hits_reached: int,
+	hits_missed: int,
+	hits_required: int,
+	max_hits_missed: int
+)
+signal reset_stages_states
+
 
 func emit_ore_stage_state_updated(current_ore: int, required_ore: int) -> void:
 	ore_stage_state_updated.emit(current_ore, required_ore)
@@ -71,8 +80,16 @@ func emit_furnace_stage_state_updated(
 	furnace_stage_state_updated.emit(current_heat_time, current_overheat_time, heat_time_required, max_overheat_time)
 
 
-func emit_anvil_stage_state_updated(hits_reached: int, hits_missed: int) -> void:
-	anvil_stage_state_updated.emit(hits_reached, hits_missed)
+func emit_anvil_stage_state_updated(
+	hits_reached: int,
+	hits_missed: int,
+	hits_required: int,
+	max_hits_missed: int
+) -> void:
+	anvil_stage_state_updated.emit(hits_reached, hits_missed, hits_required, max_hits_missed)
+
+
+func emit_reset_stages_states() -> void: reset_stages_states.emit()
 
 #endregion
 

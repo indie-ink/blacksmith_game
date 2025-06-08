@@ -16,7 +16,17 @@ var _current_ore_amount := 0
 
 func _enter_tree() -> void:
 	SignalHub.player_action_performed.connect(handle_player_action_performed)
-	SignalHub.ore_collected.connect(handle_ore_collected)
+	SignalHub.ore_stage_state_updated.connect(handle_ore_stage_state_updated)
+
+
+func handle_ore_stage_state_updated(current_ore: int, required_ore: int) -> void:
+	ore_needed_amount = required_ore
+	_current_ore_amount = current_ore
+
+	if _current_ore_amount >= ore_needed_amount:
+		_current_ore_amount = 0
+		SignalHub.emit_ore_stage_passed()
+		pick_up_item.handle_picked_up()
 
 
 func handle_interaction() -> void:
@@ -33,14 +43,6 @@ func handle_player_action_performed(action_type: Player.ActionTypes) -> void:
 
 	generate_stone_particles()
 	spawn_ore()
-
-func handle_ore_collected() -> void:
-	_current_ore_amount += 1
-
-	if _current_ore_amount >= ore_needed_amount:
-		_current_ore_amount = 0
-		SignalHub.emit_ore_stage_passed()
-		pick_up_item.handle_picked_up()
 
 
 func spawn_ore() -> void:

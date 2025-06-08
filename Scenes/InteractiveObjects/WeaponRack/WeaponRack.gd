@@ -22,7 +22,8 @@ func handle_interaction() -> void:
 
 		spawn_weapon()
 		await get_tree().create_timer(WAIT_FOR_THROW_TIME).timeout
-		SignalHub.emit_weapon_sold()
+		SignalHub.emit_weapon_rack_stage_passed()
+		SignalHub.emit_reset_stages_states()
 		pick_up_item.handle_picked_up()
 		await get_tree().create_timer(WAIT_BEFORE_SELL_TIME).timeout
 		send_weapon_to_marker()

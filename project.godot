@@ -20,6 +20,7 @@ config/icon="uid://dkobltf7xy2os"
 GameManager="*res://Globals/GameManager.gd"
 StagesStateManager="*res://Globals/StagesStateManager.gd"
 SignalHub="*res://Globals/SignalHub.gd"
+MoneyManager="*res://Globals/MoneyManager.gd"
 
 [display]
 

@@ -4,9 +4,6 @@ enum CraftingStage { ORE_ROCK, FURNACE, ANVIL, WATER_BARREL, WEAPON_RACK }
 
 var _current_stage: CraftingStage = CraftingStage.ORE_ROCK
 
-var _balance := 0
-var _current_item_price := 20
-var _price_deviation := 0.15
 
 func _enter_tree() -> void:
 	SignalHub.reset_stages_states.connect(reset_to_initial_stage)
@@ -15,16 +12,13 @@ func _enter_tree() -> void:
 	SignalHub.furnace_stage_passed.connect(proceed_to_next_stage)
 	SignalHub.anvil_stage_passed.connect(proceed_to_next_stage)
 	SignalHub.water_barrel_stage_passed.connect(proceed_to_next_stage)
-	SignalHub.weapon_rack_stage_passed.connect(handle_weapon_rack_stage_passed)
+	SignalHub.weapon_rack_stage_passed.connect(reset_to_initial_stage)
 
 
 func initial_setup() -> void:
-	_balance = 0
-	SignalHub.emit_balance_updated(_balance)
+	# reset_to_initial_stage() // for convenience of testing stages I use next line
 	set_current_stage(CraftingStage.ORE_ROCK)
 
-
-#region change stages
 
 func reset_to_initial_stage() -> void:
 	set_current_stage(CraftingStage.ORE_ROCK)
@@ -34,17 +28,6 @@ func proceed_to_next_stage() -> void:
 	set_current_stage(_current_stage + 1)
 
 
-func handle_weapon_rack_stage_passed() -> void:
-	_balance += randf_range(
-		_current_item_price - _current_item_price * _price_deviation,
-		_current_item_price + _current_item_price * _price_deviation
-	)
-	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.ORE_ROCK)
-#endregion
-
-
-#region utility
 func get_current_stage() -> CraftingStage:
 	return _current_stage
 
@@ -58,4 +41,3 @@ func set_current_stage(new_stage: CraftingStage) -> void:
 
 func is_stage_allowed(stage: CraftingStage) -> bool:
 	return _current_stage == stage
-#endregion

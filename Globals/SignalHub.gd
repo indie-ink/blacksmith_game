@@ -27,6 +27,7 @@ signal anvil_stage_passed
 
 signal water_barrel_stage_passed
 
+signal weapon_sold
 signal weapon_rack_stage_passed
 
 signal stage_updated(stage: GameManager.CraftingStage)
@@ -43,6 +44,7 @@ func emit_anvil_hit_missed() -> void: anvil_hit_missed.emit()
 func emit_anvil_stage_failed() -> void: anvil_stage_failed.emit()
 func emit_anvil_stage_passed() -> void: anvil_stage_passed.emit()
 func emit_water_barrel_stage_passed() -> void: water_barrel_stage_passed.emit()
+func emit_weapon_sold() -> void: weapon_sold.emit()
 func emit_weapon_rack_stage_passed() -> void: weapon_rack_stage_passed.emit()
 func emit_stage_updated(stage: GameManager.CraftingStage) -> void: stage_updated.emit(stage)
 #endregion

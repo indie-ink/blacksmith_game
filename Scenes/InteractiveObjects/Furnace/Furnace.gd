@@ -39,6 +39,7 @@ func handle_stage_updated(stage: GameManager.CraftingStage) -> void:
 	if stage == GameManager.CraftingStage.FURNACE:
 		init_stage()
 
+
 func init_stage() -> void:
 	thermometer.show()
 	thermometer_progress.value = initial_heat
@@ -96,7 +97,7 @@ func on_ore_process_fail() -> void:
 	SignalHub.emit_furnace_heat_updated(0, time_to_overheat)
 	fail_sound.play()
 	stop_stage()
-	SignalHub.emit_furnace_stage_failed()
+	SignalHub.emit_reset_stages_states()
 
 
 func stop_stage() -> void:

@@ -9,45 +9,29 @@ var _current_item_price := 20
 var _price_deviation := 0.15
 
 func _enter_tree() -> void:
-	SignalHub.reset_stages_states.connect(handle_reset_stages_states)
-	SignalHub.ore_stage_passed.connect(handle_ore_stage_passed)
-	SignalHub.furnace_stage_passed.connect(handle_furnace_stage_passed)
-	SignalHub.furnace_stage_failed.connect(handle_furnace_stage_failed)
-	SignalHub.anvil_stage_passed.connect(handle_anvil_stage_passed)
-	SignalHub.weapon_cooled.connect(handle_weapon_cooled)
+	SignalHub.reset_stages_states.connect(reset_to_initial_stage)
+
+	SignalHub.ore_stage_passed.connect(proceed_to_next_stage)
+	SignalHub.furnace_stage_passed.connect(proceed_to_next_stage)
+	SignalHub.anvil_stage_passed.connect(proceed_to_next_stage)
+	SignalHub.water_barrel_stage_passed.connect(proceed_to_next_stage)
 	SignalHub.weapon_rack_stage_passed.connect(handle_weapon_rack_stage_passed)
 
 
 func initial_setup() -> void:
 	_balance = 0
 	SignalHub.emit_balance_updated(_balance)
-	set_current_stage(CraftingStage.WATER_BARREL)
+	set_current_stage(CraftingStage.ORE_ROCK)
 
 
 #region change stages
 
-func handle_reset_stages_states() -> void:
+func reset_to_initial_stage() -> void:
 	set_current_stage(CraftingStage.ORE_ROCK)
 
 
-func handle_ore_stage_passed() -> void:
-	set_current_stage(CraftingStage.FURNACE)
-
-
-func handle_furnace_stage_passed() -> void:
-	set_current_stage(CraftingStage.ANVIL)
-
-
-func handle_furnace_stage_failed() -> void:
-	set_current_stage(CraftingStage.ORE_ROCK)
-
-
-func handle_anvil_stage_passed() -> void:
-	set_current_stage(CraftingStage.WATER_BARREL)
-
-
-func handle_weapon_cooled() -> void:
-	set_current_stage(CraftingStage.WEAPON_RACK)
+func proceed_to_next_stage() -> void:
+	set_current_stage(_current_stage + 1)
 
 
 func handle_weapon_rack_stage_passed() -> void:

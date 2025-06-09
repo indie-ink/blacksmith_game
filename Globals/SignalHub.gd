@@ -18,7 +18,6 @@ signal ore_stage_passed
 
 signal furnace_stage_passed
 signal furnace_heat_updated(heat_time: float, overheat_time: float)
-signal furnace_stage_failed
 
 signal anvil_stage_started
 signal anvil_hit_reached
@@ -26,24 +25,24 @@ signal anvil_hit_missed
 signal anvil_stage_failed
 signal anvil_stage_passed
 
-signal weapon_cooled
+signal water_barrel_stage_passed
 
 signal weapon_rack_stage_passed
 
 signal stage_updated(stage: GameManager.CraftingStage)
+
 
 func emit_ore_collected() -> void: ore_collected.emit()
 func emit_ore_stage_passed() -> void: ore_stage_passed.emit()
 func emit_furnace_stage_passed() -> void: furnace_stage_passed.emit()
 func emit_furnace_heat_updated(heat_time: float, overheat_time: float) -> void:
 	furnace_heat_updated.emit(heat_time, overheat_time)
-func emit_furnace_stage_failed() -> void: furnace_stage_failed.emit()
 func emit_anvil_stage_started() -> void: anvil_stage_started.emit()
 func emit_anvil_hit_reached() -> void: anvil_hit_reached.emit()
 func emit_anvil_hit_missed() -> void: anvil_hit_missed.emit()
 func emit_anvil_stage_failed() -> void: anvil_stage_failed.emit()
 func emit_anvil_stage_passed() -> void: anvil_stage_passed.emit()
-func emit_weapon_cooled() -> void: weapon_cooled.emit()
+func emit_water_barrel_stage_passed() -> void: water_barrel_stage_passed.emit()
 func emit_weapon_rack_stage_passed() -> void: weapon_rack_stage_passed.emit()
 func emit_stage_updated(stage: GameManager.CraftingStage) -> void: stage_updated.emit(stage)
 #endregion

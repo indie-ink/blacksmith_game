@@ -31,7 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if _cooling_distance > cooling_distance_to_pass:
 			reset_stage()
-			SignalHub.emit_weapon_cooled()
+			SignalHub.emit_water_barrel_stage_passed()
 			pick_up_item.handle_picked_up()
 
 

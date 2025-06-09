@@ -3,7 +3,8 @@ class_name WaterBarrel
 extends InteractiveObject
 
 const SHOW_STEAM_TIME := 2.0
-const MAX_WEAPON_ROTATION := 60.0
+const MAX_WEAPON_ROTATION := 20.0
+const MAX_WEAPON_OFFSET := 3.5
 
 @export var cooling_distance_to_pass := 10000
 
@@ -21,8 +22,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if _is_used and event is InputEventMouseMotion:
 		var new_rotation: float = sword_sprite.rotation_degrees + event.screen_relative.x * 0.05
+		var new_position_x: float = sword_sprite.position.x + event.screen_relative.x * 0.02
 
 		sword_sprite.rotation_degrees = clamp(new_rotation, -MAX_WEAPON_ROTATION, MAX_WEAPON_ROTATION)
+		sword_sprite.position.x = clamp(new_position_x, -MAX_WEAPON_OFFSET, MAX_WEAPON_OFFSET)
+
 		_cooling_distance += abs(event.screen_relative.x)
 
 		if _cooling_distance > cooling_distance_to_pass:

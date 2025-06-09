@@ -2,6 +2,7 @@ extends Control
 
 @onready var score_label: Label = $ScoreLabel
 @onready var hint_background: ColorRect = $HintBackground
+@onready var crafting_state: Control = $CraftingState
 
 
 func _ready() -> void:
@@ -16,3 +17,4 @@ func handle_balance_updated(new_balance: int) -> void:
 
 func _on_texture_button_pressed() -> void:
 	hint_background.hide()
+	crafting_state.show()

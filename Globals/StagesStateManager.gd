@@ -14,7 +14,7 @@ var _anvil_stage_state: Dictionary[String, Variant] = {
 	"hits_reached": 0,
 	"hits_missed": 0,
 	"hits_required": 4,
-	"max_hits_missed": 2
+	"max_hits_missed": 3
 }
 
 

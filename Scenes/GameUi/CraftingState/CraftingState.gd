@@ -1,16 +1,22 @@
 extends Control
 
-@onready var ore_label: Label = $VBoxContainer/OreHB/OreLabel
-@onready var furnace_heat_label: Label = $VBoxContainer/FurnaceHeatHB/FurnaceHeatLabel
-@onready var furnace_overheat_label: Label = $VBoxContainer/FurnaceOverheatHB/FurnaceOverheatLabel
-@onready var anvil_reached_hits_label: Label = $VBoxContainer/AnvilReachedHitsHB/AnvilReachedHitsLabel
-@onready var anvil_missed_hits_label: Label = $VBoxContainer/AnvilMissedHitsHB/AnvilMissedHitsLabel
+@onready var current_item_to_craft_label: Label = $VBoxContainer2/CurrentItemToCraftLabel
+@onready var ore_label: Label = $VBoxContainer2/HBoxContainer/VBoxContainer/OreHB/OreLabel
+@onready var furnace_heat_label: Label = $VBoxContainer2/HBoxContainer/VBoxContainer/FurnaceHeatHB/FurnaceHeatLabel
+@onready var furnace_overheat_label: Label = $VBoxContainer2/HBoxContainer/VBoxContainer/FurnaceOverheatHB/FurnaceOverheatLabel
+@onready var anvil_reached_hits_label: Label = $VBoxContainer2/HBoxContainer/VBoxContainer/AnvilReachedHitsHB/AnvilReachedHitsLabel
+@onready var anvil_missed_hits_label: Label = $VBoxContainer2/HBoxContainer/VBoxContainer/AnvilMissedHitsHB/AnvilMissedHitsLabel
 
 
 func _enter_tree() -> void:
+	SignalHub.item_to_craft_selected.connect(handle_item_to_craft_selected)
 	SignalHub.ore_stage_state_updated.connect(handle_ore_stage_state_updated)
 	SignalHub.furnace_stage_state_updated.connect(handle_furnace_stage_state_updated)
 	SignalHub.anvil_stage_state_updated.connect(handle_anvil_stage_state_updated)
+
+
+func handle_item_to_craft_selected(item: Dictionary) -> void:
+	current_item_to_craft_label.text = "%s: %d" % [item.display_name, item.price]
 
 
 func handle_ore_stage_state_updated(current_ore: int, required_ore: int) -> void:

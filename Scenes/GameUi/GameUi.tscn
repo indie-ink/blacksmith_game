@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://l3egkl0fu464"]
+[gd_scene load_steps=13 format=3 uid="uid://l3egkl0fu464"]
 
 [ext_resource type="Texture2D" uid="uid://bxttc8xs055h5" path="res://Assets/Sprites/4 Icons/Coin.png" id="1_anb74"]
 [ext_resource type="Script" uid="uid://btl7jhsbfgu4u" path="res://Scenes/GameUi/GameUi.gd" id="1_anolp"]
@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://dlo0lpsc0nd5g" path="res://Resources/ButtonTextWhiteMd.tres" id="7_e55ej"]
 [ext_resource type="PackedScene" uid="uid://e7430yu1ixgq" path="res://Scenes/NextStepIcon/NextStepIcon.tscn" id="7_ldyld"]
 [ext_resource type="PackedScene" uid="uid://dgeiv4csbnoy8" path="res://Scenes/GameUi/CraftingState/CraftingState.tscn" id="9_fbpwl"]
+[ext_resource type="PackedScene" uid="uid://cfq3raqmnotti" path="res://Scenes/GameUi/CraftBook/CraftBook.tscn" id="10_8kvpi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
 font = ExtResource("2_anolp")
@@ -150,5 +151,14 @@ offset_left = 104.0
 offset_top = -95.0
 offset_right = 104.0
 offset_bottom = -95.0
+
+[node name="CraftBook" parent="." instance=ExtResource("10_8kvpi")]
+layout_mode = 1
+offset_left = 2.00002
+offset_top = 138.0
+offset_right = 2.00002
+offset_bottom = 138.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 1
 
 [connection signal="pressed" from="HintBackground/HideHintButton" to="." method="_on_texture_button_pressed"]

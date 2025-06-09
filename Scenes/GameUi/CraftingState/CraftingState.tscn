@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgeiv4csbnoy8"]
+[gd_scene load_steps=5 format=3 uid="uid://dgeiv4csbnoy8"]
 
 [ext_resource type="Script" uid="uid://c5xcejdtv6g76" path="res://Scenes/GameUi/CraftingState/CraftingState.gd" id="1_u0m3u"]
+[ext_resource type="FontFile" uid="uid://ry05acjk8rq2" path="res://Assets/Font/Pixellari.ttf" id="2_ae64t"]
 [ext_resource type="LabelSettings" uid="uid://benjyghsyi5wn" path="res://Resources/TextWhiteSm.tres" id="3_mmnnj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmnnj"]
+font = ExtResource("2_ae64t")
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(6, 6)
 
 [node name="CraftingState" type="Control"]
 layout_mode = 3
@@ -10,50 +18,72 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_u0m3u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="OreHB" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CurrentItemToCraftLabel" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Sword:"
+label_settings = SubResource("LabelSettings_mmnnj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
 layout_mode = 2
 
-[node name="OreLabel" type="Label" parent="VBoxContainer/OreHB"]
+[node name="HorizontalSpace" type="Control" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="OreHB" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="OreLabel" type="Label" parent="VBoxContainer2/HBoxContainer/VBoxContainer/OreHB"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 text = "Ore: 0 / 3"
 label_settings = ExtResource("3_mmnnj")
 
-[node name="FurnaceHeatHB" type="HBoxContainer" parent="VBoxContainer"]
+[node name="FurnaceHeatHB" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FurnaceHeatLabel" type="Label" parent="VBoxContainer/FurnaceHeatHB"]
+[node name="FurnaceHeatLabel" type="Label" parent="VBoxContainer2/HBoxContainer/VBoxContainer/FurnaceHeatHB"]
 layout_mode = 2
+mouse_filter = 1
 text = "Heat: 4s"
 label_settings = ExtResource("3_mmnnj")
 
-[node name="FurnaceOverheatHB" type="HBoxContainer" parent="VBoxContainer"]
+[node name="FurnaceOverheatHB" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FurnaceOverheatLabel" type="Label" parent="VBoxContainer/FurnaceOverheatHB"]
+[node name="FurnaceOverheatLabel" type="Label" parent="VBoxContainer2/HBoxContainer/VBoxContainer/FurnaceOverheatHB"]
 layout_mode = 2
+mouse_filter = 1
 text = "Overheat: 2s"
 label_settings = ExtResource("3_mmnnj")
 
-[node name="AnvilReachedHitsHB" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AnvilReachedHitsHB" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AnvilReachedHitsLabel" type="Label" parent="VBoxContainer/AnvilReachedHitsHB"]
+[node name="AnvilReachedHitsLabel" type="Label" parent="VBoxContainer2/HBoxContainer/VBoxContainer/AnvilReachedHitsHB"]
 layout_mode = 2
+mouse_filter = 1
 text = "Anvil hits: 0 / 10"
 label_settings = ExtResource("3_mmnnj")
 
-[node name="AnvilMissedHitsHB" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AnvilMissedHitsHB" type="HBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AnvilMissedHitsLabel" type="Label" parent="VBoxContainer/AnvilMissedHitsHB"]
+[node name="AnvilMissedHitsLabel" type="Label" parent="VBoxContainer2/HBoxContainer/VBoxContainer/AnvilMissedHitsHB"]
 layout_mode = 2
+mouse_filter = 1
 text = "Anvil miss: 0 / 4"
 label_settings = ExtResource("3_mmnnj")

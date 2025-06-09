@@ -52,6 +52,8 @@ func emit_stage_updated(stage: GameManager.CraftingStage) -> void: stage_updated
 
 #region game state signals
 
+signal select_item_to_craft(item_type: StagesStateManager.CraftingItemsType)
+signal item_to_craft_selected(item: Dictionary)
 signal ore_stage_state_updated(current_ore: int, required_ore: int)
 signal furnace_stage_state_updated(
 	current_heat_time: float,
@@ -67,6 +69,10 @@ signal anvil_stage_state_updated(
 )
 signal reset_stages_states
 
+
+func emit_select_item_to_craft(item_type: StagesStateManager.CraftingItemsType) -> void:
+	select_item_to_craft.emit(item_type)
+func emit_item_to_craft_selected(item: Dictionary) -> void: item_to_craft_selected.emit(item)
 
 func emit_ore_stage_state_updated(current_ore: int, required_ore: int) -> void:
 	ore_stage_state_updated.emit(current_ore, required_ore)

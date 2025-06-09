@@ -17,7 +17,7 @@ func _enter_tree() -> void:
 
 func initial_setup() -> void:
 	# reset_to_initial_stage() // for convenience of testing stages I use next line
-	set_current_stage(CraftingStage.ORE_ROCK)
+	set_current_stage(CraftingStage.WEAPON_RACK)
 
 
 func reset_to_initial_stage() -> void:

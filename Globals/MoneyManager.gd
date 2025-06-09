@@ -1,7 +1,6 @@
 extends Node
 
 var _balance := 0
-var _current_item_price := 20
 var _price_deviation := 0.15
 
 func _enter_tree() -> void:
@@ -14,6 +13,8 @@ func initial_setup() -> void:
 
 
 func handle_weapon_sold() -> void:
+	var _current_item_price = StagesStateManager.get_selected_item_to_craft_price()
+
 	_balance += randf_range(
 		_current_item_price - _current_item_price * _price_deviation,
 		_current_item_price + _current_item_price * _price_deviation
